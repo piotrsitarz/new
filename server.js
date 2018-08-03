@@ -7,12 +7,15 @@ const nodemailer = require('nodemailer');
 const moment = require('moment');
 
 const {mongoose} = require('./server/db/mongoose');
+const {authenticate} = require('./server/middleware/authenticate');
 const {User} = require('./server/models/user');
 const {GuestsList} = require('./server/models/guests_list');
 const {DateOfWedding} = require('./server/models/date_of_wedding');
 const {WeddingVenue} = require('./server/models/wedding_venue');
 const {WeddingPartyVenue} = require('./server/models/wedding_party_venue');
-const {authenticate} = require('./server/middleware/authenticate');
+const {Budget} = require('./server/models/budget');
+const defaultExpenses = require('./server/defaultDocuments/default_expenses');
+
 
 const app = express();
 const port = process.env.PORT || 3004;
@@ -34,6 +37,7 @@ app.get('/main',(req, res) => {
     }
 });
 
+// console.log(defaultExpenses);
 app.get('/lista',(req, res) => {
     if (req.cookies.auth !== undefined) {
       res.sendFile('index.html', { root: __dirname });
@@ -200,6 +204,42 @@ app.get('/guests_list', authenticate, (req,res) => {
     res.status(400).send(e);
   })
 });
+
+app.post('/budget', authenticate, (req,res) => {
+  // console.log(req.body);
+  req.body._creator =  req.user._id;
+  var budget = new Budget(req.body);
+  budget.save().then(() => {
+      res.send('guest added');
+  }).catch((e) => {
+    res.send('exist');
+  })
+});
+
+app.get('/buget_list', authenticate, (req,res) => {
+  Budget.find({
+    _creator: req.user._id
+  }).then((expenses) => {
+    if (expenses.length === 0) {
+        let basicExpenses = defaultExpenses;
+        basicExpenses.forEach((x)=> {
+          x._creator = req.user._id;
+        });
+       Budget.collection.insert(basicExpenses, (err, docs) => {
+         if (err){
+             return console.error(err);
+         } else {
+           res.send(docs.ops);
+         }
+       });
+    } else {
+      res.send(expenses);
+    }
+  },(e) => {
+    res.status(400).send(e);
+  })
+});
+
 
 app.post('/signUp', (req, res) => {
   var body = _.pick(req.body, ['email','password']);
