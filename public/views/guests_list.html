@@ -1,0 +1,80 @@
+<div class="views__bg">
+  <div class="views__wrapper">
+    <div class="guestsList__container" layout="column" layout-align="center center">
+      <div class="guestsList__panel" layout="column" layout-align="center center">
+        <div class="guestList__ammount" layout="row" layout-align="centerc enter">
+          <p>{{guestList.guests}} Gości</p>
+          <img class="guestList__img" src="./public/img/wedding.svg" alt="wedding">
+        </div>
+        <div class="guestList__filters" layout="row" layout-align="center center">
+          <p class="guestList__paragraph">Filtruj Listę Gośći</p>
+          <img class="guestList__img" src="./public/img/down-arrow.svg" alt="down-arrow">
+            <p>{{guestList.model.length}}</p>
+        </div>
+        <div class="panel__row" layout="row" layout-align="center center" layout-md="column" layout-align-md="center center" layout-sm="column" layout-align-sm="center center" layout-xs="row" layout-align-xs="center center">
+          <div class="panel__row-1" layout="row" layout-align="center center" layout-xs="column" layout-align-xs="center center">
+            <md-input-container class="filters__inputs">
+              <label>Płeć</label>
+              <md-select class="guestsList__select" ng-model="guestList.filterSex">
+                <md-option ng-repeat="filter in guestList.filtersSex" value="{{filter.sex}}" ng-click="guestList.filter(filter)">{{filter.sex}}</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container class="filters__inputs">
+              <label>Os. Tow.</label>
+              <md-select class="guestsList__select" ng-model="guestList.filterCompan">
+                <md-option ng-repeat="filter in guestList.filtersCompan" value="{{filter.compan}}" ng-click="guestList.filter(filter)">{{filter.compan}}</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container class="filters__inputs">
+              <label>Zaproszono</label>
+              <md-select class="guestsList__select" ng-model="guestList.filterInvited">
+                <md-option ng-repeat="filter in guestList.filtersInvited" value="{{filter.invited}}" ng-click="guestList.filter(filter)">{{filter.invited}}</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+          <div class="panel__row-2" layout-xs="column" layout-align-xs="center center">
+            <md-input-container class="filters__inputs">
+              <label>Potwierdzono</label>
+              <md-select class="guestsList__select" ng-model="guestList.filterConfirmed">
+                <md-option ng-repeat="filter in guestList.filtersConfirmed" value="{{filter.confirmed}}" ng-click="guestList.filter(filter)">{{filter.confirmed}}</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container class="filters__inputs">
+              <label>Nocleg</label>
+              <md-select class="guestsList__select" ng-model="guestList.filterAccommodation">
+                <md-option ng-repeat="filter in guestList.filtersAccommodation" value="{{filter.accommodation}}" ng-click="guestList.filter(filter)">{{filter.accommodation}}</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container class="filters__inputs">
+              <label>Rodzina</label>
+              <md-select class="guestsList__select" ng-model="guestList.filterFamily">
+                <md-option ng-repeat="filter in guestList.filtersFamily" value="{{filter.family}}" ng-click="guestList.filter(filter)">{{filter.family}}</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+        </div>
+        <div class="panel__row" layout="row" layout-align="center center">
+          <md-input-container class="guestsList__input-container" md-no-float>
+            <input class="filter__input-search" ng-model="searchingPhrase" type="text" placeholder="Wyszukaj gościa">
+          </md-input-container>
+        </div>
+        <div class="panel__row" layout="row" layout-align="center center">
+          <md-button class="guestsList__button" flex="100" ng-click="addGuest()" layout="row" layout-align="center center">Dodaj Gościa</md-button>
+        </div>
+      </div>
+      <div class="guestsList__table" layout="column" layout-align="center center">
+        <div class="guestsList__content" ng-repeat="guest in guestList.model | filter  : searchingPhrase " layout="row" layout-align="center center">
+          <p flex="40" class="guestsList__guest" title="Edytuj gościa" ng-click="editGuest(guest)"  layout="row" layout-align="center center"><span class="guestList__index">{{$index+1}}</span>{{'.   ' + guest.name}}</p>
+          <img class="guestList__img" src="./public/img/cancel-mark.svg" alt="down-arrow" title="usuń gościa" ng-click="guestList.deleteGuest(guest)">
+          <div class="guestList__information" flex="60" layout="row" layout-align="start center" layout-wrap>
+            <div ng-repeat="(key, value) in guest.checkboxs[0] track by $index">
+              <md-checkbox class="guestsList__checkboxs" ng-checked="true" ng-disabled="true" aria-label="mdCheckbox" ng-if="value === true && key !== 'none'">
+                {{guestList.getCheckbox(key, guest.checkboxs[0])}}
+              </md-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

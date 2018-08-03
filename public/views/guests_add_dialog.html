@@ -1,0 +1,85 @@
+<md-dialog aria-label="Nowy gość">
+  <form name="addGuestForm" ng-cloak autocomplete="off">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Nowy Gość</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" layout="column" layout-align="center center">
+        <md-input-container class="addGuest__input-container">
+          <label>Imię i Nazwisko</label>
+          <input class="addGuest__input" required type="text" ng-model="guest.name" name="name" md-autofocus />
+          <div ng-messages="addGuestForm.name.$error" role="alert">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <div class="addGuest__choice">
+          <p class="addGuest__paragraph">Płeć:</p>
+          <md-checkbox class="addGuest__checkbox" ng-model="guest.checkboxs.women" ng-required ="!guest.checkboxs.men" ng-change="guest.checkboxs.men = false">
+            Kobieta
+          </md-checkbox>
+          <md-checkbox class="addGuest__checkbox" ng-model="guest.checkboxs.men" ng-required ="!guest.checkboxs.women" ng-change="guest.checkboxs.women = false">
+            Mężczyzna
+          </md-checkbox>
+        </div>
+        <div class="addGuest__choice">
+          <p class="addGuest__paragraph">Os. Tow.:</p>
+          <md-checkbox class="addGuest__checkbox" ng-model="guest.checkboxs.partner" ng-required ="!guest.checkboxs.noPartner"  ng-change="guest.checkboxs.noPartner = false">
+            Tak
+          </md-checkbox>
+          <md-checkbox class="addGuest__checkbox" ng-model="guest.checkboxs.noPartner" ng-required ="!guest.checkboxs.partner" ng-change="guest.checkboxs.partner = false">
+            Nie
+          </md-checkbox>
+        </div>
+        <div class="addGuest__choice">
+          <p class="addGuest__paragraph">Zaproszono:</p>
+          <md-checkbox class="addGuest__checkbox" ng-model="guest.checkboxs.invite" ng-required ="!guest.checkboxs.noInvite"  ng-change="guest.checkboxs.noInvite = false">
+            Tak
+          </md-checkbox>
+          <md-checkbox class="addGuest__checkbox" ng-model="guest.checkboxs.noInvite" ng-required ="!guest.checkboxs.invite" ng-change="guest.checkboxs.invite = false">
+            Nie
+          </md-checkbox>
+        </div>
+        <div class="addGuest__choice">
+          <p class="addGuest__paragraph">Potwierdzono</p>
+          <md-checkbox class="addGuest__checkbox" ng-model="guest.checkboxs.confirmation" ng-required ="!guest.checkboxs.noConfirmation"  ng-change="guest.checkboxs.noConfirmation = false">
+            Tak
+          </md-checkbox>
+          <md-checkbox class="addGuest__checkbox" ng-model="guest.checkboxs.noConfirmation" ng-required ="!guest.checkboxs.confirmation" ng-change="guest.checkboxs.confirmation = false">
+            Nie
+          </md-checkbox>
+        </div>
+        <div class="addGuest__choice">
+          <p class="addGuest__paragraph">Nocleg:</p>
+          <md-checkbox class="addGuest__checkbox" ng-model="guest.checkboxs.accommodation" ng-required ="!guest.checkboxs.noAccommodation"  ng-change="guest.checkboxs.noAccommodation = false">
+            Tak
+          </md-checkbox>
+          <md-checkbox class="addGuest__checkbox" ng-model="guest.checkboxs.noAccommodation" ng-required ="!guest.checkboxs.accommodation" ng-change="guest.checkboxs.accommodation = false">
+            Nie
+          </md-checkbox>
+        </div>
+        <div class="addGuest__choice">
+          <p class="addGuest__paragraph">Od Strony:</p>
+          <md-checkbox class="addGuest__checkbox" ng-model="guest.checkboxs.groom" ng-required ="!guest.checkboxs.bride"  ng-change="guest.checkboxs.bride = false">
+            Pan Młody
+          </md-checkbox>
+          <md-checkbox class="addGuest__checkbox" ng-model="guest.checkboxs.bride" ng-required ="!guest.checkboxs.groom" ng-change="guest.checkboxs.groom = false">
+            Pani Młoda
+          </md-checkbox>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions class="md-toolbar-actions" layout="row">
+      <md-button ng-click="dialogHide()">
+        Anuluj
+      </md-button>
+      <md-button ng-click="confirmAdd(guest, true)" ng-disabled="addGuestForm.$invalid">
+       Dodaj kolejnego i zapisz
+      </md-button>
+      <md-button ng-click="confirmAdd(guest)" ng-disabled="addGuestForm.$invalid">
+        Dodaj
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

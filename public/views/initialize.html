@@ -1,0 +1,51 @@
+<div class="initialize__bg " layout="row" layout-align="center center">
+ <div class="login__whiteframe" layout="row" layout-align="center center" md-whiteframe="{{height}}" ng-init="height = 12" ng-mouseenter="height = 3" ng-mouseleave="height = 12">
+   <md-nav-bar md-selected-nav-item="login.currentNavItem" nav-bar-aria-label="navigation links">
+     <md-nav-item md-nav-click="login.changeNav('login')" name="login">
+       Login
+     </md-nav-item>
+     <md-nav-item md-nav-click="login.changeNav('signUp')" name="signUp">
+       Sign Up
+     </md-nav-item>
+   </md-nav-bar>
+   <form name="loginForm" ng-if="login.showLogin" autocomplete="off">
+     <md-content layout="column" class="md-padding">
+       <md-input-container class="login__input-container">
+         <label>Email</label>
+         <input class="login__input" required type="email" ng-model="login.account.email" name="email"/>
+         <div ng-messages="loginForm.email.$error">
+           <div ng-message="required">This is required.</div>
+         </div>
+       </md-input-container>
+       <md-input-container class="login__input-container">
+         <label>Password</label>
+         <input class="login__input" required type="password" ng-model="login.account.password" name="password" />
+         <div ng-messages="loginForm.password.$error" role="alert">
+           <div ng-message="required">This is required.</div>
+         </div>
+       </md-input-container>
+       <md-button class="login__button" ng-click="login.do(login.account)" ng-disabled="loginForm.$invalid">Login</md-button>
+     </md-content>
+   </form>
+   <form name="signInForm" ng-if="!login.showLogin" autocomplete="off">
+     <md-content layout="column" class="md-padding">
+       <md-input-container class="login__input-container">
+         <label>Email</label>
+         <input class="login__input" required type="email" ng-model="signUp.account.email" name="email"/>
+         <div ng-messages="signInForm.email.$error">
+           <div ng-message="required">This is required.</div>
+         </div>
+       </md-input-container>
+       <md-input-container class="login__input-container">
+         <label>Password</label>
+         <input class="login__input" required minlength="6" type="password" ng-model="signUp.account.password" name="password" />
+         <div ng-messages="signInForm.password.$error" role="alert">
+           <div ng-message="required">This is required.</div>
+         </div>
+       </md-input-container>
+       <md-button class="login__button" ng-click="signUp.do(signUp.account)" ng-disabled="signInForm.$invalid">Sign Up</md-button>
+     </md-content>
+   </form>
+ </div>
+</div>
+<div ui-view="mainView" class="main-view">aaaa</div>

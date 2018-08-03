@@ -1,0 +1,67 @@
+<!doctype html>
+<html ng-app="weddingApp">
+ <head>
+
+   <title> weddingApp </title>
+
+   <meta charset="utf-8">
+   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+   <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Cardo:400i" rel="stylesheet">
+	 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css">
+	 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+	 <link href="https://vitalets.github.io/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
+   <link href="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/themes/material-ui.min.css" rel="stylesheet">
+   <link href="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.css" rel="stylesheet">
+   <link rel="stylesheet" property="stylesheet" href="public/css/initialize.css">
+   <link rel="stylesheet" property="stylesheet" href="public/css/guests_list.css">
+   <link rel="stylesheet" property="stylesheet" href="public/css/general.css">
+   <link rel="stylesheet" property="stylesheet" href="public/css/header.css">
+   <link rel="stylesheet" property="stylesheet" href="public/css/guests_arrangement.css">
+   <link rel="stylesheet" property="stylesheet" href="public/css/budget.css">
+   <link rel="stylesheet" property="stylesheet" href="public/css/calendar.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-dragula/1.2.7/dragula.min.css">
+
+
+ </head>
+ <body ng-cloak>
+
+   <div ui-view="headerView"></div>
+   <div ui-view="mainView"></div>
+
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9_WaWpZqnSLuTv72G53rMHITRNOQBSMc"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.min.js"></script>
+	 <!-- Angular Material requires Angular.js Libraries -->
+	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-animate.min.js"></script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-aria.min.js"></script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-messages.min.js"></script>
+
+	 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.js"></script>
+	 <script src="https://vitalets.github.io/angular-xeditable/dist/js/xeditable.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-cookies.js"></script>
+   <script src="https://unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+
+   <script src="https://momentjs.com/downloads/moment.js"></script>
+   <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.2.0/angular-moment.js"></script>
+   <script src="https://cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/2.2.2/moment-duration-format.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-dragula/1.2.7/angular-dragula.min.js"></script>
+
+	 <script src="public/js/dev/app.js"></script>
+	 <script src="public/js/dev/controllers/initialize.controller.js"></script>
+   <script src="public/js/dev/controllers/general.controller.js"></script>
+   <script src="public/js/dev/controllers/guests_list.controller.js"></script>
+   <script src="public/js/dev/controllers/dialog.controller.js"></script>
+   <script src="public/js/dev/controllers/header.controller.js"></script>
+   <script src="public/js/dev/controllers/guestes_arrangement.controller.js"></script>
+   <script src="public/js/dev/controllers/budget.controller.js"></script>
+   <script src="public/js/dev/controllers/calendar.controller.js"></script>
+	 <script src="public/js/dev/services/login.service.js"></script>
+   <script src="public/js/dev/services/sign_up.service.js"></script>
+   <script src="public/js/dev/services/guest_list.service.js"></script>
+
+ </body>
+</html>

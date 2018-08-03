@@ -1,0 +1,25 @@
+<!-- <div class="header">
+  <a ng-class="views__route[0]" ng-click="changeViewToMain()" href="" >Ogólne</a>
+  <a ng-class="views__route[1]" ng-click="changeViewToGuestsList()" href="">Lista Gości</a>
+  <a ng-class="views__route[2]" ng-click="changeViewToGuestsArrangement()" href="">Rozmieszczenie Gości</a>
+  <a ng-class="views__route[3]" ng-click="changeViewToBudget()" href="">Budżet</a>
+  <a ng-class="views__route[4]" ng-click="changeViewToCalendar() " href="">Kalendarz</a>
+  <md-button class="header__button" ng-click="logout()" href="" ng-click="changeStyleOfView()">Logout</md-button>
+</div> -->
+<div class="header">
+  <div class="header__menu" layout="row" layout-align="center center" ng-click="toggleLeft()">
+    <img src="./public/img/menu.svg" alt="menu icon">
+    <p class="menu__title">Menu</p>
+  </div>
+  <h1 class="header__title">Wedding Organizer</h1>
+  <md-button class="header__button" ng-click="logout()" href="" ng-click="changeStyleOfView()">Logout</md-button>
+</div>
+<md-sidenav class="sidenav" md-component-id="left" md-whiteframe="4" layout="column" layout-align="center center">
+  <div class="sidenav__navigation" layout="column" laout-align="center center">
+    <a ng-class="views__route[0]" ng-click="changeViewToMain()" href="" >Ogólne</a>
+    <a ng-class="views__route[1]" ng-click="changeViewToGuestsList()" href="">Lista Gości</a>
+    <a ng-class="views__route[2]" ng-click="changeViewToGuestsArrangement()" href="">Rozmieszczenie Gości</a>
+    <a ng-class="views__route[3]" ng-click="changeViewToBudget()" href="">Budżet</a>
+    <a ng-class="views__route[4]" ng-click="changeViewToCalendar() " href="">Kalendarz</a>
+  </div>
+</md-sidenav>

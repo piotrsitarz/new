@@ -1,0 +1,134 @@
+.arrangement__container {
+  margin-top:70px;
+  width:100%;
+}
+
+.arrangement__guests, .arrangement__tables {
+  text-align:center;
+  padding-top:40px;
+}
+
+.arrangement__header img.arrangement__img {
+  height:100px;
+}
+
+.arrangement__title {
+  font-size: 70px;
+  color: #0A0A0A;
+  font-family: 'Lora', serif;
+  font-weight: bold;
+  font-style: italic;
+  margin-left:15px;
+}
+
+.arrangement__input-container {
+  width:98%;
+}
+
+.arrangement__input-search {
+  text-align:center;
+}
+
+md-input-container.md-input-invalid .md-input.arrangement__input-search {
+  border-color:rgba(0,0,0,0.12);
+  border-width: 0 0 1px;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused .arrangement__input-search, md-select:not([disabled]):focus .md-select-value {
+  border-bottom-color:#818AC4;
+}
+
+.arrangement__button {
+  background:#5B607B;
+  color:white;
+  padding:5px 0;
+  margin:6px 0 42px 0;
+}
+
+.arrangement__button:not([disabled]):hover {
+  background:#7A7E94
+}
+
+.md-button[disabled].arrangement__button {
+  background:rgba(158,158,158,0.2);
+}
+
+.guests__wrapper, .tables__container {
+    border-top:1px solid #5B607B;
+}
+
+.guests__wrapper {
+  padding-top: 41px;
+  width:100%;
+}
+
+.guests__paragraph:first-child {
+  border-top: 1px solid #F6F7FE;
+}
+
+.guestsList__content:last-child {
+  margin-bottom:40px;
+}
+
+.guests__paragraph, .table__guest {
+  color: black;
+  font-size: 24px;
+  font-family: 'Cardo', serif;
+  padding-left: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid #F6F7FE;
+}
+
+ p.table__guest {
+  width:90%;
+}
+
+.guests__paragraph {
+  width:100%;
+}
+
+.guests__paragraph:hover,  p.table__guest:hover {
+  cursor:pointer;
+  box-shadow: 0 0 5px rgba(246, 247, 254, 1);
+  border: 2px solid rgba(246, 247, 254, 1);
+  font-weight:bold;
+}
+
+.table__guests {
+  box-sizing: border-box;
+  width:80%;
+  background:#AFB6E1;
+  border:1px solid #818AC4;
+  min-height:200px;
+  padding:15px 0;
+}
+
+.table__title {
+  color: black;
+  height:95px;
+  line-height:95px;
+  font-size: 54px;
+  font-weight: bold;
+  font-family: 'Lora', serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media only screen and (max-width: 720px) {
+
+  .arrangement__title {
+    display:none;
+  }
+
+  .md-input.arrangement__input-search {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+}

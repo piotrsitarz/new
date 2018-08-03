@@ -1,0 +1,182 @@
+.guestsList__container {
+  width:100%;
+}
+
+.guestsList__table, .guestsList__panel, .guestsList__title, .guestsList__content, .panel__row {
+  width:100%;
+}
+
+.guestList__ammount {
+  font-size:70px;
+  color:#0A0A0A;
+  font-family: 'Lora', serif;
+  font-weight:bold;
+  padding:30px 0;
+  font-style: italic;
+  height:110px;
+  line-height:110px;
+  margin-bottom:40px;
+}
+
+.guestList__ammount img.guestList__img {
+    height:100px;
+    padding-left:20px;
+}
+
+.guestsList__content img.guestList__img {
+    height:32px;
+    padding-right:20px;
+}
+
+.guestList__filters {
+  width:100%;
+  background:#5B607B;
+  color:white;
+  font-weight:bold;
+  height:48px;
+  line-height:48px;
+}
+
+.guestList__filters  img {
+  height:32px;
+  padding-left:5px;
+}
+
+.filters__inputs {
+  width:150px;
+}
+
+.guestsList__select {
+  display: block;
+  position: relative;
+  vertical-align: middle;
+}
+
+.guestsList__input-container {
+  height:20px;
+  width:100%;
+}
+
+.filter__input-search {
+  text-align:center;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused .filter__input-search, md-select:not([disabled]):focus .md-select-value {
+  border-bottom-color:#818AC4;
+}
+
+.guestsList__button{
+  background:#5B607B;
+  color:white;
+  min-width:100%;
+  padding:5px 0;
+}
+
+.guestsList__guest {
+  color:black;
+  font-size:24px;
+  font-family: 'Cardo', serif;
+  padding-left:10px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  display:block;
+}
+
+.guestList__index {
+  font-family:Roboto,Helvetica Neue,sans-serif;
+}
+
+.md-button.guestsList__button:hover {
+  color:black;
+}
+
+.guestsList__title {
+  border-bottom:1px solid #F6F7FE;
+}
+
+.guestsList {
+  width:100%;
+  height:50px;
+}
+
+.guestsList__content {
+  padding-bottom:10px;
+  padding-top:10px;
+  border-bottom:1px solid #F6F7FE;
+}
+
+.guestsList__content:last-child {
+  margin-bottom:40px;
+}
+
+.guestsList__content:hover {
+  cursor:pointer;
+  box-shadow: 0 0 5px rgba(246, 247, 254, 1);
+  border: 2px solid rgba(246, 247, 254, 1);
+  font-weight:bold;
+}
+
+.md-toolbar-tools, .md-toolbar-actions {
+  background:black;
+}
+
+.md-dialog-content {
+  background:white;
+}
+
+md-checkbox[disabled].md-checked .md-icon {
+    background-color:#5B607B;
+}
+
+md-checkbox[disabled] .md-label {
+  color:black;
+  font-size:20px;
+  font-family: 'Lora', serif;
+}
+
+ md-checkbox:last-of-type.guestsList__checkboxs {
+  margin-right:10px;
+  width:160px;
+}
+
+md-checkbox.guestsList__checkboxs {
+ margin-bottom:0px;
+ display:block;
+}
+
+md-toolbar:not(.md-menu-toolbar) {
+  background-color:#2C2C2C;
+}
+
+md-checkbox .md-label {
+  color:black;
+  font-size:18px;
+}
+
+md-checkbox.md-checked .md-icon {
+  background-color:#5B607B;
+}
+
+md-dialog md-dialog-content {
+  background-color:#F0EFEA;
+}
+
+md-dialog md-dialog-actions {
+  background-color:#2C2C2C;
+  color:white;
+}
+
+.addGuest__paragraph {
+  text-align:center;
+  padding-bottom:10px;
+  font-size:20px;
+  font-weight:bold;
+  color:#2C2C2C;
+}
+
+@media only screen and (max-width: 420px) {
+  .guestList__ammount img.guestList__img {
+      display:none;
+  }
+}

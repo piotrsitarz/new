@@ -1,0 +1,82 @@
+<md-dialog aria-label="Nowy gość">
+  <form name="editGuestForm" ng-cloak autocomplete="off">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Edytuj Gościa</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" layout="column" layout-align="center center">
+        <md-input-container class="addGuest__input-container">
+          <label>Imię i Nazwisko</label>
+          <input class="addGuest__input" required type="text" ng-model="guestList.toEdit.name" name="name" ng-change="checkChanges()" md-autofocus />
+          <div ng-messages="editGuestForm.name.$error" role="alert">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <div class="addGuest__choice">
+          <p class="addGuest__paragraph">Płeć:</p>
+          <md-checkbox class="addGuest__checkbox" ng-model="guestList.toEdit.checkboxs[0].women" ng-required ="!guestList.toEdit.checkboxs[0].men" ng-change="guestList.toEdit.checkboxs[0].men = false ; checkChanges()">
+            Kobieta
+          </md-checkbox>
+          <md-checkbox class="addGuest__checkbox" ng-model="guestList.toEdit.checkboxs[0].men" ng-required ="!guestList.toEdit.checkboxs[0].women" ng-change="guestList.toEdit.checkboxs[0].women = false ; checkChanges()">
+            Mężczyzna
+          </md-checkbox>
+        </div>
+        <div class="addGuest__choice">
+          <p class="addGuest__paragraph">Os. Tow.:</p>
+          <md-checkbox class="addGuest__checkbox" ng-model="guestList.toEdit.checkboxs[0].partner" ng-required ="!guestList.toEdit.checkboxs[0].noPartner"  ng-change="guestList.toEdit.checkboxs[0].noPartner = false ; checkChanges()">
+            Tak
+          </md-checkbox>
+          <md-checkbox class="addGuest__checkbox" ng-model="guestList.toEdit.checkboxs[0].noPartner" ng-required ="!guestList.toEdit.checkboxs[0].partner" ng-change="guestList.toEdit.checkboxs[0].partner = false ; checkChanges()">
+            Nie
+          </md-checkbox>
+        </div>
+        <div class="addGuest__choice">
+          <p class="addGuest__paragraph">Zaproszono:</p>
+          <md-checkbox class="addGuest__checkbox" ng-model="guestList.toEdit.checkboxs[0].invite" ng-required ="!guestList.toEdit.checkboxs[0].noInvite"  ng-change="guestList.toEdit.checkboxs[0].noInvite = false ; checkChanges()">
+            Tak
+          </md-checkbox>
+          <md-checkbox class="addGuest__checkbox" ng-model="guestList.toEdit.checkboxs[0].noInvite" ng-required ="!guestList.toEdit.checkboxs[0].invite" ng-change="guestList.toEdit.checkboxs[0].invite = false ; checkChanges()">
+            Nie
+          </md-checkbox>
+        </div>
+        <div class="addGuest__choice">
+          <p class="addGuest__paragraph">Potwierdzono</p>
+          <md-checkbox class="addGuest__checkbox" ng-model="guestList.toEdit.checkboxs[0].confirmation" ng-required ="!guestList.toEdit.checkboxs[0].noConfirmation"  ng-change="guestList.toEdit.checkboxs[0].noConfirmation = false ; checkChanges()">
+            Tak
+          </md-checkbox>
+          <md-checkbox class="addGuest__checkbox" ng-model="guestList.toEdit.checkboxs[0].noConfirmation" ng-required ="!guestList.toEdit.checkboxs[0].confirmation" ng-change="guestList.toEdit.checkboxs[0].confirmation = false ; checkChanges()">
+            Nie
+          </md-checkbox>
+        </div>
+        <div class="addGuest__choice">
+          <p class="addGuest__paragraph">Nocleg:</p>
+          <md-checkbox class="addGuest__checkbox" ng-model="guestList.toEdit.checkboxs[0].accommodation" ng-required ="!guestList.toEdit.checkboxs[0].noAccommodation"  ng-change="guestList.toEdit.checkboxs[0].noAccommodation = false ; checkChanges()">
+            Tak
+          </md-checkbox>
+          <md-checkbox class="addGuest__checkbox" ng-model="guestList.toEdit.checkboxs[0].noAccommodation" ng-required ="!guestList.toEdit.checkboxs[0].accommodation" ng-change="guestList.toEdit.checkboxs[0].accommodation = false ; checkChanges()">
+            Nie
+          </md-checkbox>
+        </div>
+        <div class="addGuest__choice">
+          <p class="addGuest__paragraph">Od Strony:</p>
+          <md-checkbox class="addGuest__checkbox" ng-model="guestList.toEdit.checkboxs[0].groom" ng-required ="!guestList.toEdit.checkboxs[0].bride"  ng-change="guestList.toEdit.checkboxs[0].bride = false ; checkChanges()">
+            Pan Młody
+          </md-checkbox>
+          <md-checkbox class="addGuest__checkbox" ng-model="guestList.toEdit.checkboxs[0].bride" ng-required ="!guestList.toEdit.checkboxs[0].groom" ng-change="guestList.toEdit.checkboxs[0].groom = false ; checkChanges()">
+            Pani Młoda
+          </md-checkbox>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions class="md-toolbar-actions" layout="row">
+      <md-button ng-click="dialogHide(); guestList.get()">
+        Anuluj
+      </md-button>
+      <md-button ng-click="confirmEdit(guestList.toEdit)" ng-disabled="!guestChanged">
+        Edytuj
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
