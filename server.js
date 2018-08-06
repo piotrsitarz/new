@@ -9,12 +9,14 @@ const moment = require('moment');
 const {mongoose} = require('./server/db/mongoose');
 const {authenticate} = require('./server/middleware/authenticate');
 const {User} = require('./server/models/user');
-const {GuestsList} = require('./server/models/guests_list');
+const {Guests} = require('./server/models/guests');
 const {DateOfWedding} = require('./server/models/date_of_wedding');
 const {WeddingVenue} = require('./server/models/wedding_venue');
 const {WeddingPartyVenue} = require('./server/models/wedding_party_venue');
-const {Budget} = require('./server/models/budget');
-const defaultExpenses = require('./server/defaultDocuments/default_expenses');
+const {Expenses} = require('./server/models/expenses');
+const {Actions} = require('./server/models/actions');
+const defaultExpenses = require('./server/default_documents/default_expenses');
+const defaultActions = require('./server/default_documents/default_actions');
 
 
 const app = express();
@@ -172,9 +174,9 @@ app.post('/update_wedding_party_venue', authenticate, (req,res) => {
   })
 });
 
-app.post('/guests_list_add', authenticate, (req,res) => {
+app.post('/guests_add', authenticate, (req,res) => {
   req.body._creator =  req.user._id;
-  var guest = new GuestsList(req.body);
+  const guest = new Guests(req.body);
   guest.save().then(() => {
       res.send('guest added');
   }).catch((e) => {
@@ -182,8 +184,8 @@ app.post('/guests_list_add', authenticate, (req,res) => {
   })
 });
 
-app.post('/guests_list_edit', authenticate, (req,res) => {
-  GuestsList.findOneAndUpdate({_id:req.body._id, _creator:req.body._creator}, {$set:req.body}, {new:true}).then((guest) => {
+app.post('/guests_edit', authenticate, (req,res) => {
+  Guests.findOneAndUpdate({_id:req.body._id, _creator:req.body._creator}, {$set:req.body}, {new:true}).then((guest) => {
   if (!guest) {
     return res.status(404).send;
   }
@@ -194,7 +196,7 @@ app.post('/guests_list_edit', authenticate, (req,res) => {
 });
 
 app.get('/guests_list', authenticate, (req,res) => {
-  GuestsList.find({
+  Guests.find({
     _creator: req.user._id
   }).then((guests) => {
     res.send({
@@ -205,19 +207,18 @@ app.get('/guests_list', authenticate, (req,res) => {
   })
 });
 
-app.post('/budget', authenticate, (req,res) => {
-  // console.log(req.body);
+app.post('/expenses__add', authenticate, (req,res) => {
   req.body._creator =  req.user._id;
-  var budget = new Budget(req.body);
-  budget.save().then(() => {
+  const expense = new Expenses(req.body);
+  expense.save().then(() => {
       res.send('guest added');
   }).catch((e) => {
     res.send('exist');
   })
 });
 
-app.get('/buget_list', authenticate, (req,res) => {
-  Budget.find({
+app.get('/expenses_list', authenticate, (req,res) => {
+  Expenses.find({
     _creator: req.user._id
   }).then((expenses) => {
     if (expenses.length === 0) {
@@ -225,15 +226,49 @@ app.get('/buget_list', authenticate, (req,res) => {
         basicExpenses.forEach((x)=> {
           x._creator = req.user._id;
         });
-       Budget.collection.insert(basicExpenses, (err, docs) => {
+       Expenses.collection.insert(basicExpenses, (err, docs) => {
          if (err){
-             return console.error(err);
+           return console.error(err);
          } else {
            res.send(docs.ops);
          }
        });
     } else {
       res.send(expenses);
+    }
+  },(e) => {
+    res.status(400).send(e);
+  })
+});
+
+// app.post('/actions_add', authenticate, (req,res) => {
+//   req.body._creator =  req.user._id;
+//   const expense = new Expenses(req.body);
+//   expense.save().then(() => {
+//       res.send('guest added');
+//   }).catch((e) => {
+//     res.send('exist');
+//   })
+// });
+
+app.get('/actions_list', authenticate, (req,res) => {
+  Actions.find({
+    _creator: req.user._id
+  }).then((actions) => {
+    if (actions.length === 0) {
+        let basicActions = defaultActions;
+        basicActions.forEach((x)=> {
+          x._creator = req.user._id;
+        });
+       Actions.collection.insert(basicActions, (err, docs) => {
+         if (err){
+           return console.error(err);
+         } else {
+           res.send(docs.ops);
+         }
+       });
+    } else {
+      res.send(actions);
     }
   },(e) => {
     res.status(400).send(e);

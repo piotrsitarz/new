@@ -11,7 +11,7 @@
   color:#0A0A0A;
   font-family: 'Lora', serif;
   font-weight:bold;
-  padding:30px 0;
+  padding:70px 0;
   font-style: italic;
   height:110px;
   line-height:110px;
@@ -24,17 +24,21 @@
 }
 
 .guestsList__content img.guestList__img {
-    height:32px;
+    height:18px;
     padding-right:20px;
+    padding-left:20px;
 }
+
 
 .guestList__filters {
   width:100%;
-  background:#5B607B;
-  color:white;
+  background:#CACACA;
+  color:rgba(0,0,0,0.38);
   font-weight:bold;
   height:48px;
   line-height:48px;
+  margin-top:70px;
+  margin-bottom:10px;
 }
 
 .guestList__filters  img {
@@ -62,14 +66,19 @@
 }
 
 md-input-container:not(.md-input-invalid).md-input-focused .filter__input-search, md-select:not([disabled]):focus .md-select-value {
-  border-bottom-color:#818AC4;
+  border-bottom-color:#DCDCDC;
 }
 
-.guestsList__button{
-  background:#5B607B;
-  color:white;
+.guestsList__button {
+  color:rgba(0,0,0,0.38);
   min-width:100%;
   padding:5px 0;
+  background:#CACACA;
+}
+
+.md-button.guestsList__button:hover {
+  color:white;
+  background:#5E5F5F;
 }
 
 .guestsList__guest {
@@ -85,10 +94,6 @@ md-input-container:not(.md-input-invalid).md-input-focused .filter__input-search
 
 .guestList__index {
   font-family:Roboto,Helvetica Neue,sans-serif;
-}
-
-.md-button.guestsList__button:hover {
-  color:black;
 }
 
 .guestsList__title {
@@ -121,12 +126,22 @@ md-input-container:not(.md-input-invalid).md-input-focused .filter__input-search
   background:black;
 }
 
+.md-toolbar-delete {
+  background:grey;
+}
+
+.dialog__delete {
+  color:black;
+  font-size:22px;
+  padding:50px;
+}
+
 .md-dialog-content {
   background:white;
 }
 
 md-checkbox[disabled].md-checked .md-icon {
-    background-color:#5B607B;
+    background-color:#5E5F5F;
 }
 
 md-checkbox[disabled] .md-label {
@@ -155,7 +170,7 @@ md-checkbox .md-label {
 }
 
 md-checkbox.md-checked .md-icon {
-  background-color:#5B607B;
+  background-color:#5E5F5F;
 }
 
 md-dialog md-dialog-content {
@@ -174,6 +189,15 @@ md-dialog md-dialog-actions {
   font-weight:bold;
   color:#2C2C2C;
 }
+
+@media only screen and (max-width: 540px) {
+  .dialog__delete {
+    color:black;
+    font-size:22px;
+    padding:20px;
+  }
+}
+
 
 @media only screen and (max-width: 420px) {
   .guestList__ammount img.guestList__img {

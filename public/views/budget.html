@@ -1,34 +1,37 @@
 <div class="views__bg">
   <div class="views__wrapper">
-    <h1>Budżet!</div>
-      <form name="addExpenseForm" ng-cloak autocomplete="off">
-        <md-dialog-content>
-          <div class="md-dialog-content" layout="column" layout-align="center center">
-            <md-input-container class="addGuest__input-container">
-              <label>nazwa wydatku</label>
-              <input class="addGuest__input" required type="text" ng-model="expense.name" name="name" md-autofocus />
-              <div ng-messages="addGuestForm.name.$error" role="alert">
-                <div ng-message="required">This is required.</div>
-              </div>
-            </md-input-container>
-            <md-input-container class="addGuest__input-container">
-              <label>cena wydatku</label>
-              <input class="addGuest__input" required type="number" ng-model="expense.price" name="price" md-autofocus />
-              <div ng-messages="addGuestForm.name.$error" role="alert">
-                <div ng-message="required">This is required.</div>
-              </div>
-            </md-input-container>
-          <md-button ng-click="addExpense(expense)" ng-disabled="addExpenseForm.$invalid">dodaj wydatek</md-button>
-      </form>
-      <div class="guestsList__content" layout="row" layout-align="center center">
-        <p flex="40" class="guestsList__guest nazwa" layout="row" layout-align="center center">nazwa</p>
-        <p flex="40" class="guestsList__guest cena" layout="row" layout-align="center center">cena</p>
+    <div class="budget__container" layout="column" layout-align="center center">
+      <div class="budget__panel" layout="column" layout-align="center center">
+        <div class="budget__ammount" layout="row" layout-align="center center">
+          <img class="budget__img" src="./public/img/piggybank.svg" alt="piggy-bank">
+          <p class="budget__paragraph">25 000 zł</p>
+        </div>
+        <form class="budget__form" name="addExpenseForm" ng-cloak autocomplete="off">
+          <div class="form__container" layout="column" layout-align="center center">
+            <div class="form__inputs" layout="row" layout-align="end end">
+              <md-input-container class="form__input-container" flex="50">
+                <label class="form__label">nazwa wydatku</label>
+                <input class="form__input" required type="text" ng-model="expense.name" name="name" md-autofocus />
+                <div ng-messages="addGuestForm.name.$error" role="alert">
+                  <div ng-message="required">This is required.</div>
+                </div>
+              </md-input-container>
+              <md-input-container class="form__input-container" flex="50">
+                <label class="form__label">cena wydatku</label>
+                <input class="form__input" required type="number" min="1" ng-model="expense.price" name="price" md-autofocus />
+                <div ng-messages="addGuestForm.name.$error" role="alert">
+                  <div ng-message="required">This is required.</div>
+                </div>
+              </md-input-container>
+            </div>
+            <md-button class="form__buton" ng-click="addExpense(expense)" ng-disabled="addExpenseForm.$invalid" layout="row" layout-align="center center">dodaj wydatek</md-button>
+          </div>
+        </form>
       </div>
-      <div class="guestsList__content" ng-repeat="exp in expenses track by $index" layout="row" layout-align="center center">
-              <p flex="40" class="guestsList__guest" layout="row" layout-align="center center">{{exp.name}}</p>
-              <p flex="40" class="guestsList__guest" layout="row" layout-align="center center">{{exp.price}}</p>
-        <!-- <p flex="40" class="guestsList__guest" layout="row" layout-align="center center">Nazwa:{{exp.name}} Cena:{{exp.price}}</p> -->
-      </div>
-
+    </div>
+    <div class="budget__content" ng-repeat="exp in expenses track by $index" layout="row" layout-align="center center">
+      <p flex="60" class="budget__expense" layout="row" layout-align="center center">{{exp.name}}</p>
+      <p flex="40" class="budget__expense" layout="row" layout-align="center center">{{exp.price}} zł</p>
+    </div>
   </div>
 </div>

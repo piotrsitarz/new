@@ -5,7 +5,7 @@ angular.module('weddingApp')
     .factory('guestList', ['$http', function($http) {
 
         var factory = {};
-        factory.toEdit = '';
+
         factory.get = function() {
           $http.get('/guests_list').then(function successCallback(response) {
             factory.model = response.data.guests;
@@ -15,9 +15,10 @@ angular.module('weddingApp')
               if (x.checkboxs[0].partner) {
                   factory.guests++;
               }
+            });
+            factory.filteredGuests = factory.guests;
           });
-        });
-      };
+        };
 
       factory.get();
 
@@ -198,6 +199,7 @@ angular.module('weddingApp')
         };
 
         factory.filter = function(filter) {
+          console.log('aaa',filter);
           if(filter.sex !== undefined) {
             if(filter.sex === 'None') {
                 factory.filterBySex(filter);
@@ -331,15 +333,21 @@ angular.module('weddingApp')
               return guest;
             }
           });
+          var filteredGuestsWithCompan = 0;
+          factory.model.forEach(function(guest){
+            if (guest.checkboxs[0].partner) {
+                filteredGuestsWithCompan++;
+            }
+          })
+          factory.filteredGuests = factory.model.length + filteredGuestsWithCompan;
         };
 
-        factory.deleteGuest = function(guest) {
-          // console.log(guest._id);
-          // console.log(factory.model);
+        factory.deleteGuest = function() {
           factory.model = factory.model.filter(function(x){
-            return x._id !== guest._id;
+            return x._id !== factory.toDelete._id;
           })
         };
+
 
         return factory;
 

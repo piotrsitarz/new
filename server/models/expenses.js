@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Budget = mongoose.model('Budget',{
+const Expenses = mongoose.model('Expenses',{
     name: {
         type: String,
         required: true,
@@ -21,5 +21,5 @@ const Budget = mongoose.model('Budget',{
 });
 
 module.exports = {
-    Budget
+    Expenses
 };

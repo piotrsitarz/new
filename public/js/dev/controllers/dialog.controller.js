@@ -23,6 +23,11 @@ angular.module('weddingApp')
         });
       };
 
+      $scope.confirmedDelete = function() {
+        $mdDialog.hide();
+        guestList.deleteGuest();
+      };
+
       $scope.confirmAdd = function(guest, next) {
         var guestInformations = {};
         for (var key in guest.checkboxs) {
@@ -42,7 +47,7 @@ angular.module('weddingApp')
           $mdDialog.hide();
         }
 
-        $http.post('/guests_list_add', newGuest).then(function successCallback(response) {
+        $http.post('/guests_add', newGuest).then(function successCallback(response) {
           if (response.data === 'exist') {
             $scope.guestExist();
             Object.keys(guest.checkboxs).forEach(function(key, value) {
@@ -72,10 +77,42 @@ angular.module('weddingApp')
         if (guestExisting === 2) {
           $mdDialog.hide();
           $scope.guestExist();
-            guestList.get();
+          guestList.get();
         } else {
+          console.log(guestEdited.partner);
+            if (!guestEdited.partner) {
+              guestEdited.partner = 0;
+            }
+            console.log(guestEdited.partner);
+            console.log('--------')
+            guestList.filteredGuests = guestList.filteredGuests + guestEdited.partner;
+            guestList.guests = guestList.guests + guestEdited.partner;
+            // console.log(guestEdited.partner);
+            // console.log(guestList.guests);
+            // console.log(guestList.filteredGuests);
+            // console.log(guestList.model);
+            // console.log(guestList.filters);
+            // console.log(guestList.model.length);
+            // var guestListModelLength = guestList.model.length;
+            // guestList.filters.forEach(function(x){
+            //   if ((x.family && guestEdited.changed === 'family') || (x.)) {
+            //     // factory.model
+            //     // console.log('familiada!');
+            //     guestList.model = guestList.model.filter(function(guest){
+            //       if (guest.name !== guestEdited.name) {
+            //         return guest;
+            //       }
+            //     });
+            //   }
+            //               console.log(guestList.model.length);
+            // });
+            //
+            // if(guestList.model.length !== guestListModelLength) {
+            //   if(guestEdited.checkboxs[0].partner === tru);
+            // }
+            // console.log(guestEdited);
             $mdDialog.hide();
-            $http.post('/guests_list_edit', guestEdited).then(function successCallback(response) {
+            $http.post('/guests_edit', guestEdited).then(function successCallback(response) {
             });
           }
         };

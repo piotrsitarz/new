@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const GuestsList = mongoose.model('GuestsList',{
+const Guests = mongoose.model('Guests',{
     name: {
         type: String,
         required: true,
@@ -82,5 +82,5 @@ const GuestsList = mongoose.model('GuestsList',{
 });
 
 module.exports = {
-    GuestsList
+    Guests
 };

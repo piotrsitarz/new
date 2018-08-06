@@ -1,5 +1,34 @@
 <div class="views__bg">
   <div class="views__wrapper">
     <h1>Kalendarz!</div>
+
+      <form name="addExpenseForm" ng-cloak autocomplete="off">
+        <md-dialog-content>
+          <div class="md-dialog-content" layout="column" layout-align="center center">
+            <md-input-container class="addGuest__input-container">
+              <label>nazwa wydatku</label>
+              <input class="addGuest__input" required type="text" ng-model="expense.name" name="name" md-autofocus />
+              <div ng-messages="addGuestForm.name.$error" role="alert">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="addGuest__input-container">
+              <label>cena wydatku</label>
+              <input class="addGuest__input" required type="number" ng-model="expense.price" name="price" md-autofocus />
+              <div ng-messages="addGuestForm.name.$error" role="alert">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+          <md-button ng-click="addExpense(expense)" ng-disabled="addExpenseForm.$invalid">dodaj wydatek</md-button>
+      </form>
+      <div class="guestsList__content" layout="row" layout-align="center center">
+        <p flex="40" class="guestsList__guest nazwa" layout="row" layout-align="center center">nazwa</p>
+        <p flex="40" class="guestsList__guest cena" layout="row" layout-align="center center">cena</p>
+      </div>
+      <div class="guestsList__content" ng-repeat="exp in expenses track by $index" layout="row" layout-align="center center">
+              <p flex="40" class="guestsList__guest" layout="row" layout-align="center center">{{exp.name}}</p>
+              <p flex="40" class="guestsList__guest" layout="row" layout-align="center center">{{exp.price}}</p>
+      </div>
+      
   </div>
 </div>

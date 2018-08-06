@@ -9,7 +9,7 @@
         <div class="guestList__filters" layout="row" layout-align="center center">
           <p class="guestList__paragraph">Filtruj Listę Gośći</p>
           <img class="guestList__img" src="./public/img/down-arrow.svg" alt="down-arrow">
-            <p>{{guestList.model.length}}</p>
+          <p>{{guestList.filteredGuests}}</p>
         </div>
         <div class="panel__row" layout="row" layout-align="center center" layout-md="column" layout-align-md="center center" layout-sm="column" layout-align-sm="center center" layout-xs="row" layout-align-xs="center center">
           <div class="panel__row-1" layout="row" layout-align="center center" layout-xs="column" layout-align-xs="center center">
@@ -64,8 +64,8 @@
       </div>
       <div class="guestsList__table" layout="column" layout-align="center center">
         <div class="guestsList__content" ng-repeat="guest in guestList.model | filter  : searchingPhrase " layout="row" layout-align="center center">
-          <p flex="40" class="guestsList__guest" title="Edytuj gościa" ng-click="editGuest(guest)"  layout="row" layout-align="center center"><span class="guestList__index">{{$index+1}}</span>{{'.   ' + guest.name}}</p>
-          <img class="guestList__img" src="./public/img/cancel-mark.svg" alt="down-arrow" title="usuń gościa" ng-click="guestList.deleteGuest(guest)">
+          <img class="guestList__img" src="./public/img/cancel-mark.svg" alt="down-arrow" title="Usuń Gościa {{guest.name}}" ng-click="deleteGuest(guest)">
+          <p flex="40" class="guestsList__guest" title="Edytuj Gościa {{guest.name}}" ng-click="editGuest(guest)"  layout="row" layout-align="center center"><span class="guestList__index">{{$index+1}}</span>{{'.   ' + guest.name}}</p>
           <div class="guestList__information" flex="60" layout="row" layout-align="start center" layout-wrap>
             <div ng-repeat="(key, value) in guest.checkboxs[0] track by $index">
               <md-checkbox class="guestsList__checkboxs" ng-checked="true" ng-disabled="true" aria-label="mdCheckbox" ng-if="value === true && key !== 'none'">

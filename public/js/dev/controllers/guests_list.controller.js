@@ -11,7 +11,8 @@ angular.module('weddingApp')
           controller: 'dialogController',
           templateUrl: 'public/views/guests_add_dialog.html',
           parent: angular.element(document.body),
-          clickOutsideToClose:true
+          clickOutsideToClose:true,
+          escapeToClose: false
         });
         $mdDialog
           .show(alert)
@@ -29,6 +30,22 @@ angular.module('weddingApp')
           templateUrl: 'public/views/guests_edit_dialog.html',
           parent: angular.element(document.body),
           clickOutsideToClose:false,
+          escapeToClose: false
+        });
+        $mdDialog
+          .show(alert)
+          .finally(function() {
+              alert = undefined;
+        });
+      };
+
+      $scope.deleteGuest = function(guest) {
+        guestList.toDelete = guest;
+        alert = $mdDialog.alert({
+          controller: 'dialogController',
+          templateUrl: 'public/views/guests_delete_dialog.html',
+          parent: angular.element(document.body),
+          clickOutsideToClose:true,
           escapeToClose: false
         });
         $mdDialog

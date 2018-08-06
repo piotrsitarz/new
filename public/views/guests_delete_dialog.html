@@ -1,0 +1,13 @@
+<md-dialog aria-label="Nowy gość">
+    <md-dialog-content class="md-dialog-delete">
+      <p class="dialog__delete">Czy na pewno chcesz usunąć gościa?</p>
+    </md-dialog-content>
+    <md-dialog-actions class="md-toolbar-delete" layout="row">
+      <md-button ng-click="dialogHide()">
+        Nie
+      </md-button>
+      <md-button ng-click="confirmedDelete()" ng-disabled="addGuestForm.$invalid">
+        Tak
+      </md-button>
+    </md-dialog-actions>
+</md-dialog>
