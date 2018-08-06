@@ -199,7 +199,6 @@ angular.module('weddingApp')
         };
 
         factory.filter = function(filter) {
-          console.log('aaa',filter);
           if(filter.sex !== undefined) {
             if(filter.sex === 'None') {
                 factory.filterBySex(filter);
@@ -343,9 +342,19 @@ angular.module('weddingApp')
         };
 
         factory.deleteGuest = function() {
-          factory.model = factory.model.filter(function(x){
-            return x._id !== factory.toDelete._id;
-          })
+
+          $http.post('/guests_delete', factory.toDelete).then(function successCallback(response) {
+            factory.model = factory.model.filter(function(x){
+              return x._id !== factory.toDelete._id;
+            });
+            if (factory.toDelete.checkboxs[0].partner) {
+              factory.filteredGuests = factory.filteredGuests -2;
+              factory.guests = factory.guests -2;
+            }else {
+              factory.filteredGuests = factory.filteredGuests -1;
+              factory.guests = factory.guests -1;
+            }
+          });
         };
 
 

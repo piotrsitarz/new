@@ -79,38 +79,14 @@ angular.module('weddingApp')
           $scope.guestExist();
           guestList.get();
         } else {
-          console.log(guestEdited.partner);
             if (!guestEdited.partner) {
               guestEdited.partner = 0;
             }
-            console.log(guestEdited.partner);
-            console.log('--------')
             guestList.filteredGuests = guestList.filteredGuests + guestEdited.partner;
             guestList.guests = guestList.guests + guestEdited.partner;
-            // console.log(guestEdited.partner);
-            // console.log(guestList.guests);
-            // console.log(guestList.filteredGuests);
-            // console.log(guestList.model);
-            // console.log(guestList.filters);
-            // console.log(guestList.model.length);
-            // var guestListModelLength = guestList.model.length;
-            // guestList.filters.forEach(function(x){
-            //   if ((x.family && guestEdited.changed === 'family') || (x.)) {
-            //     // factory.model
-            //     // console.log('familiada!');
-            //     guestList.model = guestList.model.filter(function(guest){
-            //       if (guest.name !== guestEdited.name) {
-            //         return guest;
-            //       }
-            //     });
-            //   }
-            //               console.log(guestList.model.length);
-            // });
-            //
-            // if(guestList.model.length !== guestListModelLength) {
-            //   if(guestEdited.checkboxs[0].partner === tru);
-            // }
-            // console.log(guestEdited);
+            guestList.filters.forEach(function(filter){
+              guestList.filter(filter);
+            })
             $mdDialog.hide();
             $http.post('/guests_edit', guestEdited).then(function successCallback(response) {
             });

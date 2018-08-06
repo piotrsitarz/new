@@ -195,6 +195,17 @@ app.post('/guests_edit', authenticate, (req,res) => {
   })
 });
 
+app.post('/guests_delete', authenticate, (req,res) => {
+  Guests.findByIdAndRemove(req.body._id).then((guest) => {
+  if (!guest) {
+    return res.status(404).send;
+  }
+    res.send({guest});
+  }).catch((e) => {
+    res.status(400).send;
+  })
+});
+
 app.get('/guests_list', authenticate, (req,res) => {
   Guests.find({
     _creator: req.user._id

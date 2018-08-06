@@ -76,7 +76,8 @@ img.places__img, img.date__img {
 }
 
 .editable-click:hover {
-  color:#8C408C;
+  font-weight:bold;
+  color:black;
   cursor:pointer;
 }
 
@@ -86,7 +87,7 @@ img.places__img, img.date__img {
 
 .editable-controls input {
   font-size:32px;
-  color:#5D0F5D;
+  color:black;
   font-family: 'Cardo', serif;
   width: auto;
 }

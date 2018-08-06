@@ -108,7 +108,7 @@ md-input-container:not(.md-input-invalid).md-input-focused .filter__input-search
 .guestsList__content {
   padding-bottom:10px;
   padding-top:10px;
-  border-bottom:1px solid #F6F7FE;
+  border-bottom:1px solid #DCDCDC;
 }
 
 .guestsList__content:last-child {
@@ -117,8 +117,8 @@ md-input-container:not(.md-input-invalid).md-input-focused .filter__input-search
 
 .guestsList__content:hover {
   cursor:pointer;
-  box-shadow: 0 0 5px rgba(246, 247, 254, 1);
-  border: 2px solid rgba(246, 247, 254, 1);
+  box-shadow: 0 0 5px rgba(121,121,121, 1);
+  border: 2px solid rgba(121,121,121, 1);
   font-weight:bold;
 }
 
