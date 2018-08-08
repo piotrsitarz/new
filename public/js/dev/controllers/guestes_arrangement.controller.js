@@ -7,7 +7,6 @@ angular.module('weddingApp')
       $scope.getGuestList = function() {
         $http.get('/guests_list').then(function successCallback(response) {
           $scope.guestsOfTable = response.data.guests;
-          console.log($scope.guestsOfTable);
         });
       };
 

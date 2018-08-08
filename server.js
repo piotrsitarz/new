@@ -221,10 +221,32 @@ app.get('/guests_list', authenticate, (req,res) => {
 app.post('/expenses__add', authenticate, (req,res) => {
   req.body._creator =  req.user._id;
   const expense = new Expenses(req.body);
-  expense.save().then(() => {
-      res.send('guest added');
+  expense.save().then((expense) => {
+      res.send(expense);
   }).catch((e) => {
     res.send('exist');
+  })
+});
+
+app.post('/expenses_edit', authenticate, (req,res) => {
+  Expenses.findOneAndUpdate({_id:req.body._id, _creator:req.body._creator}, {$set:req.body}, {new:true}).then((guest) => {
+  if (!expense) {
+    return res.status(404).send;
+  }
+    res.send({expense});
+  }).catch((e) => {
+    res.status(400).send;
+  })
+});
+
+app.post('/expenses_delete', authenticate, (req,res) => {
+  Expenses.findByIdAndRemove(req.body._id).then((expense) => {
+  if (!expense) {
+    return res.status(404).send;
+  }
+    res.send(expense);
+  }).catch((e) => {
+    res.status(400).send;
   })
 });
 

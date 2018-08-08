@@ -2,23 +2,53 @@
 
 angular.module('weddingApp')
 
-    .controller('budgetController', ['$scope','$http', function($scope,$http) {
+    .controller('budgetController', ['$scope','$http','$mdDialog','expenses', function($scope,$http,$mdDialog,expenses) {
 
-      $scope.addExpense = function(expense) {
-        var a = {name:expense.name,price:expense.price};
-        $http.post('/expenses__add', a).then(function successCallback(response) {
-          $scope.expenses.push(a);
-          expense.name = '';
-          expense.price = '';
+      $scope.expenses = expenses;
+
+      $scope.deleteExpense = function(expense) {
+        expenses.toDelete = expense;
+        alert = $mdDialog.alert({
+          controller: 'dialogController',
+          templateUrl: 'public/views/expenses_delete_dialog.html',
+          parent: angular.element(document.body),
+          clickOutsideToClose:true,
+          escapeToClose: false
+        });
+        $mdDialog
+          .show(alert)
+          .finally(function() {
+              alert = undefined;
         });
       };
 
-      $scope.getExpenses = function() {
-        $http.get('/expenses_list').then(function successCallback(response) {
-          $scope.expenses = response.data;
+      $scope.editExpense = function(expense) {
+        expenses.beforeEdit = angular.copy(expense);
+        expenses.toEdit = expense;
+        alert = $mdDialog.alert({
+          controller: 'dialogController',
+          templateUrl: 'public/views/expenses_edit_dialog.html',
+          parent: angular.element(document.body),
+          clickOutsideToClose:false,
+          escapeToClose: false
+        });
+        $mdDialog
+          .show(alert)
+          .finally(function() {
+              alert = undefined;
         });
       }
 
-      $scope.getExpenses();
+      $scope.filterExpenses = function(expense) {
+        if (expense === 'opłacone') {
+          return function(item) {
+            return item.price === item.paid;
+          };
+        }else if (expense === 'częściowo') {
+          return function(item) {
+            return ((item.price !== item.paid) && item.paid >0);
+          };
+        }
+      };
 
     }]);

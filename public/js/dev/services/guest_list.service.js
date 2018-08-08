@@ -342,7 +342,6 @@ angular.module('weddingApp')
         };
 
         factory.deleteGuest = function() {
-
           $http.post('/guests_delete', factory.toDelete).then(function successCallback(response) {
             factory.model = factory.model.filter(function(x){
               return x._id !== factory.toDelete._id;

@@ -2,9 +2,10 @@
 
 angular.module('weddingApp')
 
-    .controller('dialogController', ['$scope','$http','$mdDialog','$cookies','$timeout','guestList', function($scope,$http,$mdDialog,$cookies,$timeout,guestList) {
+    .controller('dialogController', ['$scope','$http','$mdDialog','$cookies','$timeout','guestList','expenses', function($scope,$http,$mdDialog,$cookies,$timeout,guestList,expenses) {
 
       $scope.guestList = guestList;
+      $scope.expenses = expenses;
 
       $scope.dialogHide = function() {
         $mdDialog.hide();
@@ -23,10 +24,29 @@ angular.module('weddingApp')
         });
       };
 
-      $scope.confirmedDelete = function() {
+      $scope.expenseExist = function() {
+        alert = $mdDialog.alert({
+          title: 'Uwaga!',
+          content: 'Istnieje wydatek o podanej nazwie. Proszę wybrać inną nazwę.',
+          ok: 'Close'
+        });
+        $mdDialog
+          .show(alert)
+          .finally(function() {
+              alert = undefined;
+        });
+      };
+
+      $scope.confirmedDeleteGuest = function() {
         $mdDialog.hide();
         guestList.deleteGuest();
       };
+
+      $scope.confirmedDeleteExpense = function() {
+        $mdDialog.hide();
+        expenses.deleteExpense();
+      };
+
 
       $scope.confirmAdd = function(guest, next) {
         var guestInformations = {};
@@ -93,6 +113,33 @@ angular.module('weddingApp')
           }
         };
 
+        $scope.confirmEditExpenses = function(expenseEdited) {
+          if (expenseEdited.price !== expenses.beforeEdit.price || expenseEdited.paid !== expenses.beforeEdit.paid ) {
+            var diffPrice = expenseEdited.price - expenses.beforeEdit.price;
+            expenses.expensesAmount = expenses.expensesAmount + diffPrice;
+            var diffPaid = expenseEdited.paid - expenses.beforeEdit.paid;
+            expenses.expensesPaidAmount = expenses.expensesPaidAmount + diffPaid;
+            expenses.diff = expenses.expensesAmount - expenses.expensesPaidAmount;
+          }
+          var expenseExisting = 0;
+
+          expenses.model.forEach(function(expense){
+            if (expense.name === expenseEdited.name ) {
+              expenseExisting++;
+            }
+          });
+
+          if (expenseExisting === 2) {
+            $mdDialog.hide();
+            $scope.expenseExist();
+            expenses.get();
+          } else {
+            $mdDialog.hide();
+            $http.post('/expenses_edit', expenseEdited).then(function successCallback(response) {
+            });
+          }
+        }
+
       $scope.checkChanges = function() {
         if (guestList.beforeEdit.name === guestList.toEdit.name && JSON.stringify(guestList.beforeEdit.checkboxs[0]) === JSON.stringify(guestList.toEdit.checkboxs[0])) {
           $scope.guestChanged = false;
@@ -100,6 +147,16 @@ angular.module('weddingApp')
           $scope.guestChanged = false;
         } else {
             $scope.guestChanged = true;
+        }
+      };
+
+      $scope.checkExpenseChanges = function() {
+        if (expenses.beforeEdit.name === expenses.toEdit.name && expenses.beforeEdit.price === expenses.toEdit.price && expenses.beforeEdit.paid === expenses.toEdit.paid) {
+          $scope.expenseChanged = false;
+        } else if (expenses.toEdit.name === undefined || expenses.toEdit.price === undefined || expenses.toEdit.paid === undefined) {
+            $scope.expenseChanged = false;
+        } else {
+          $scope.expenseChanged = true;
         }
       };
 

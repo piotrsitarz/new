@@ -9,8 +9,14 @@ const Expenses = mongoose.model('Expenses',{
         unique:true
     },
     price: {
-        type: String,
+        type: Number,
         required: true,
+        minlength: 1,
+        trim: true
+    },
+    paid: {
+        type: Number,
+        required: false,
         minlength: 1,
         trim: true
     },

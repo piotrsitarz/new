@@ -1,0 +1,39 @@
+<md-dialog aria-label="Nowy gość">
+  <form name="editExpenseForm" ng-cloak autocomplete="off">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Edytuj Wydatek</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" layout="column" layout-align="center center">
+        <md-input-container class="addGuest__input-container">
+          <label>Nazwa Wydatku</label>
+          <input class="addGuest__input" required type="text" ng-model="expenses.toEdit.name" name="name" ng-change="checkExpenseChanges()"/>
+          <div ng-messages="editExpenseForm.name.$error" role="alert">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="addGuest__input-container">
+          <label>Cena Wydatku</label>
+          <input class="addGuest__input" required type="number" min="0" ng-model="expenses.toEdit.price" name="price" ng-change="checkExpenseChanges()"/>
+          <div ng-messages="editExpenseForm.price.$error" role="alert">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="addGuest__input-container">
+          <label>Opłacony Koszt</label>
+          <input class="addGuest__input" required type="number" min="0" max="{{expenses.toEdit.price}}" ng-model="expenses.toEdit.paid" name="paid" ng-change="checkExpenseChanges()"/>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions class="md-toolbar-actions" layout="row">
+      <md-button ng-click="dialogHide() ; expenses.get()">
+        Anuluj
+      </md-button>
+      <md-button ng-click="confirmEditExpenses(expenses.toEdit)" ng-disabled="!expenseChanged">
+        Edytuj
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

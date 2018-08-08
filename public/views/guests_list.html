@@ -64,8 +64,8 @@
       </div>
       <div class="guestsList__table" layout="column" layout-align="center center">
         <div class="guestsList__content" ng-repeat="guest in guestList.model | filter  : searchingPhrase " layout="row" layout-align="center center">
-          <img class="guestList__img" src="./public/img/cancel-mark.svg" alt="down-arrow" title="Usuń Gościa {{guest.name}}" ng-click="deleteGuest(guest)">
-          <p flex="40" class="guestsList__guest" title="Edytuj Gościa {{guest.name}}" ng-click="editGuest(guest)"  layout="row" layout-align="center center"><span class="guestList__index">{{$index+1}}</span>{{'.   ' + guest.name}}</p>
+          <img class="guestList__img" src="./public/img/cancel-mark.svg" alt="down-arrow" title="Usuń Gościa: {{guest.name}}" ng-click="deleteGuest(guest)">
+          <p flex="40" class="guestsList__guest" title="Edytuj Gościa: {{guest.name}}" ng-click="editGuest(guest)"  layout="row" layout-align="center center"><span class="guestList__index">{{$index+1}}</span>{{'.   ' + guest.name}}</p>
           <div class="guestList__information" flex="60" layout="row" layout-align="start center" layout-wrap>
             <div ng-repeat="(key, value) in guest.checkboxs[0] track by $index">
               <md-checkbox class="guestsList__checkboxs" ng-checked="true" ng-disabled="true" aria-label="mdCheckbox" ng-if="value === true && key !== 'none'">

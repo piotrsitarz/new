@@ -1,4 +1,4 @@
-.budget__container, .budget__panel, .form__inputs {
+.budget__container, .budget__panel, .form__inputs, .form__filters, .budget__calculations {
   width:100%;
 }
 
@@ -10,13 +10,21 @@
   height: 200px;
 }
 
+.budget__calculations {
+  padding-left:40px;
+}
+
 .budget__paragraph {
   font-size:70px;
   color:#0A0A0A;
   font-family:'Lora', serif;
-  font-weight:bold;
   font-style:italic;
-  padding-left:10px;
+  text-align:center;
+}
+
+.budget__paragraph--sum {
+  font-weight:bold;
+  border-top:1px solid black;
 }
 
 .md-button.form__buton {
@@ -26,10 +34,6 @@
   padding:5px 0;
   cursor:pointer;
 }
-
-/* .md-button.form__buton:hover {
-  color:black;
-} */
 
 md-input-container.form__input-container {
   margin:0;
@@ -52,13 +56,6 @@ md-input-container label:not(.md-no-float):not(.md-container-ignore) {
   background:rgba(158,158,158,0.2);
 }
 
-.arrangement__button {
-  background:#5B607B;
-  color:white;
-  padding:5px 0;
-  margin:6px 0 42px 0;
-}
-
 .budget__expense {
   color:black;
   font-size:24px;
@@ -68,8 +65,13 @@ md-input-container label:not(.md-no-float):not(.md-container-ignore) {
   text-overflow:ellipsis;
   white-space:nowrap;
   display:block;
-  padding: 10px 0;
   text-align:center;
+}
+
+.budget__content {
+  padding-bottom:10px;
+  padding-top:10px;
+  border-bottom:1px solid #DCDCDC;
 }
 
 .budget__content:hover {
@@ -79,11 +81,35 @@ md-input-container label:not(.md-no-float):not(.md-container-ignore) {
   font-weight:bold;
 }
 
+.budget__content:last-child {
+  margin-bottom:70px;
+}
 
-/* md-button[disabled].guestsList__button {
-    background: rgba(158,158,158,0.2);
-} */
+.budget__content:hover {
+  cursor:pointer;
+  box-shadow: 0 0 5px rgba(121,121,121, 1);
+  border: 2px solid rgba(121,121,121, 1);
+  font-weight:bold;
+}
 
-/* md-input-container:not(.md-input-invalid).md-input-focused .filter__input-search, md-select:not([disabled]):focus .md-select-value {
-  border-bottom-color:#DCDCDC;
-} */
+.budget__content img.guestList__img {
+  height:18px;
+  padding-right:20px;
+  padding-left:20px;
+}
+
+.filters__expense, .filters__price {
+  width:200px;
+}
+
+@media only screen and (max-width: 600px) {
+  .budget__paragraph {
+    padding-left:0;
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .budget__calculations {
+    padding-left:0;
+  }
+}
