@@ -14,6 +14,21 @@ const Actions = mongoose.model('Actions',{
         minlength: 1,
         trim: true
     },
+    date: {
+        type: String,
+        required: true
+    },
+    utc: {
+        type: Number,
+        required: true
+    },
+    done: {
+        type: Boolean,
+        required: false,
+        minlength: 1,
+        trim: true,
+        default: false
+    },
     _creator: {
         type: mongoose.Schema.Types.ObjectId,
         required:true,

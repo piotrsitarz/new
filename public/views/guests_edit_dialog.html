@@ -71,7 +71,7 @@
       </div>
     </md-dialog-content>
     <md-dialog-actions class="md-toolbar-actions" layout="row">
-      <md-button ng-click="dialogHide() ; guestList.get()">
+      <md-button ng-click="dialogHide() ; guestList.get(true)">
         Anuluj
       </md-button>
       <md-button ng-click="confirmEdit(guestList.toEdit)" ng-disabled="!guestChanged">

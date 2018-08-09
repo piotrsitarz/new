@@ -1,0 +1,35 @@
+<md-dialog aria-label="Nowy gość">
+  <form name="addExpenseForm" ng-cloak autocomplete="off">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Nowy Gość</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" layout="column" layout-align="center center">
+        <md-input-container class="addExpense__input-container">
+          <label>Nazwa Wydatku</label>
+          <input class="addExpense__input" required type="text" ng-model="expense.name" name="name" md-autofocus />
+          <div ng-messages="addExpenseForm.name.$error" role="alert">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="addExpense__input-container">
+          <label>Cena Wydatku</label>
+          <input class="addExpense__input" required type="number" min="1" ng-model="expense.price" name="price" md-autofocus />
+          <div ng-messages="addExpenseForm.name.$error" role="alert">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions class="md-toolbar-actions" layout="row">
+      <md-button ng-click="dialogHide()">
+        Anuluj
+      </md-button>
+      <md-button ng-click="addExpense(expense)" ng-disabled="addExpenseForm.$invalid">
+        Dodaj
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

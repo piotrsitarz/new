@@ -32,7 +32,7 @@
 
 .guestList__filters {
   width:100%;
-  background:#CACACA;
+  background:#D4D4D4;
   color:rgba(0,0,0,0.38);
   font-weight:bold;
   height:48px;
@@ -69,16 +69,26 @@ md-input-container:not(.md-input-invalid).md-input-focused .filter__input-search
   border-bottom-color:#DCDCDC;
 }
 
+.guestList__paragraph {
+  color:white;
+}
+
+.guestList__paragraph.guestList__paragraph--ammount {
+  font-weight:bold;
+  color:black;
+  margin-left:10px;
+}
+
 .guestsList__button {
-  color:rgba(0,0,0,0.38);
+  color:white;
   min-width:100%;
   padding:5px 0;
-  background:#CACACA;
+  background:#D4D4D4;
 }
 
 .md-button.guestsList__button:hover {
   color:white;
-  background:#5E5F5F;
+  background:#BABABA;
 }
 
 .guestsList__guest {

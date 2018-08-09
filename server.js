@@ -39,7 +39,6 @@ app.get('/main',(req, res) => {
     }
 });
 
-// console.log(defaultExpenses);
 app.get('/lista',(req, res) => {
     if (req.cookies.auth !== undefined) {
       res.sendFile('index.html', { root: __dirname });
@@ -274,15 +273,41 @@ app.get('/expenses_list', authenticate, (req,res) => {
   })
 });
 
-// app.post('/actions_add', authenticate, (req,res) => {
-//   req.body._creator =  req.user._id;
-//   const expense = new Expenses(req.body);
-//   expense.save().then(() => {
-//       res.send('guest added');
-//   }).catch((e) => {
-//     res.send('exist');
-//   })
-// });
+app.post('/actions_add', authenticate, (req,res) => {
+  req.body._creator =  req.user._id;
+  Actions.find({
+    _creator: req.user._id
+  }).then((act) => {
+      let action = new Actions(req.body);
+      action.save().then((action) => {
+          res.send(action);
+      })
+  },(e) => {
+    res.status(400).send(e);
+  })
+});
+
+app.post('/actions_edit', authenticate, (req,res) => {
+  Actions.findOneAndUpdate({_id:req.body._id, _creator:req.body._creator}, {$set:req.body}, {new:true}).then((action) => {
+  if (!action) {
+    return res.status(404).send;
+  }
+    res.send(action);
+  }).catch((e) => {
+    res.status(400).send;
+  })
+});
+
+app.post('/actions_delete', authenticate, (req,res) => {
+  Actions.findByIdAndRemove(req.body._id).then((action) => {
+  if (!action) {
+    return res.status(404).send;
+  }
+    res.send(action);
+  }).catch((e) => {
+    res.status(400).send;
+  })
+});
 
 app.get('/actions_list', authenticate, (req,res) => {
   Actions.find({

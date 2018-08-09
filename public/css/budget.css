@@ -1,4 +1,4 @@
-.budget__container, .budget__panel, .form__inputs, .form__filters, .budget__calculations {
+.budget__container, .budget__panel, .controlls__container, .controlls__filters, .budget__calculations, .budget__content, .controlls__buton {
   width:100%;
 }
 
@@ -27,12 +27,15 @@
   border-top:1px solid black;
 }
 
-.md-button.form__buton {
-  background:#5B607B;
+.md-button.controlls__buton {
+  background:#D4D4D4;
   color:white;
   min-width:100%;
   padding:5px 0;
-  cursor:pointer;
+}
+
+.md-button.controlls__buton:hover {
+  background:#BABABA;
 }
 
 md-input-container.form__input-container {
@@ -46,14 +49,6 @@ md-input-container label:not(.md-no-float):not(.md-container-ignore) {
 
 .form__label, .form__input {
   text-align:center;
-}
-
-.form__buton:not([disabled]):hover {
-  background:#7A7E94
-}
-
-.md-button[disabled].form__buton {
-  background:rgba(158,158,158,0.2);
 }
 
 .budget__expense {
@@ -92,7 +87,7 @@ md-input-container label:not(.md-no-float):not(.md-container-ignore) {
   font-weight:bold;
 }
 
-.budget__content img.guestList__img {
+.budget__content img.budget__img {
   height:18px;
   padding-right:20px;
   padding-left:20px;

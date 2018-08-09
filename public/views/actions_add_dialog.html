@@ -1,0 +1,40 @@
+<md-dialog aria-label="Nowy gość">
+  <form name="addActionForm" ng-cloak autocomplete="off">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Nowy Gość</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" layout="column" layout-align="center center">
+        <md-input-container class="addExpense__input-container">
+          <label>Nazwa Czynności</label>
+          <input class="addExpense__input" required type="text" ng-model="action.name" name="name" ng-change="checkenableAddActionButton(action)" md-autofocus />
+          <div ng-messages="addActionForm.name.$error" role="alert">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <div class="date__picker" moment-picker="dateOfActionText" format="YYYY dddd D MMMM HH:[00]" change="updateDateOfAction(dateOfActionText, action.date)" layout="row" layout-align="center center">
+          <p class="date__value date__value--padding" ng-model="action.date">{{action.date}}</p>
+        </div>
+        <md-input-container class="filters__expense" layout="column" layout-align="end center">
+          <label >Typ Czynności:</label>
+          <md-select ng-model="action.type" ng-change="checkenableAddActionButton(action)" required>
+            <md-option value="Kościół">Kościół</md-option>
+            <md-option value="Ogólne">Ogólne</md-option>
+            <md-option value="Panna Młoda">Panna Młoda</md-option>
+            <md-option value="Pan Młody">Pan Młody</md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions class="md-toolbar-actions" layout="row">
+      <md-button ng-click="dialogHide()">
+        Anuluj
+      </md-button>
+      <md-button ng-click="addAction(action)" ng-disabled="!enableAddActionButton">
+        Dodaj
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

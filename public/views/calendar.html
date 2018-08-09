@@ -1,34 +1,134 @@
 <div class="views__bg">
   <div class="views__wrapper">
-    <h1>Kalendarz!</div>
-
-      <form name="addExpenseForm" ng-cloak autocomplete="off">
-        <md-dialog-content>
-          <div class="md-dialog-content" layout="column" layout-align="center center">
-            <md-input-container class="addGuest__input-container">
-              <label>nazwa wydatku</label>
-              <input class="addGuest__input" required type="text" ng-model="expense.name" name="name" md-autofocus />
-              <div ng-messages="addGuestForm.name.$error" role="alert">
-                <div ng-message="required">This is required.</div>
-              </div>
-            </md-input-container>
-            <md-input-container class="addGuest__input-container">
-              <label>cena wydatku</label>
-              <input class="addGuest__input" required type="number" ng-model="expense.price" name="price" md-autofocus />
-              <div ng-messages="addGuestForm.name.$error" role="alert">
-                <div ng-message="required">This is required.</div>
-              </div>
-            </md-input-container>
-          <md-button ng-click="addExpense(expense)" ng-disabled="addExpenseForm.$invalid">dodaj wydatek</md-button>
-      </form>
-      <div class="guestsList__content" layout="row" layout-align="center center">
-        <p flex="40" class="guestsList__guest nazwa" layout="row" layout-align="center center">nazwa</p>
-        <p flex="40" class="guestsList__guest cena" layout="row" layout-align="center center">cena</p>
+    <div class="actions__container" layout="column" layout-align="center center">
+      <div class="actions__panel" layout="column" layout-align="center center">
+        <div class="actions__earliest" layout="column" layout-align="center center">
+          <p class="earliest__paragraph">Najbliższe Czynności:</p>
+          <div class="earliest__list" ng-repeat="earliest in actions.earliestModel track by $index" layout="column" layout-align="center center">
+            <p class="action__paragraph action__paragraph--early" layout="row" layout-align="center center">{{earliest.name}}</p>
+            <p class="action__paragraph" layout="row" layout-align="center center">{{earliest.date}}</p>
+          </div>
+        </div>
+        <div class="actions__add" layout="row" layout-align="center center">
+          <md-button class="add__button" ng-click="addAction()" layout="row" layout-align="center center">dodaj czynność</md-button>
+        </div>
       </div>
-      <div class="guestsList__content" ng-repeat="exp in expenses track by $index" layout="row" layout-align="center center">
-              <p flex="40" class="guestsList__guest" layout="row" layout-align="center center">{{exp.name}}</p>
-              <p flex="40" class="guestsList__guest" layout="row" layout-align="center center">{{exp.price}}</p>
+      <div class="actions__wrapper">
+        <div class="actions__title" layout="row" layout-align="center end">
+          <img class="actions__img" src="./public/img/church_c.svg" alt="calendar">
+          <p class="actions__paragraph">Kościół</p>
+        </div>
+        <div class="actions__filters" layout="row" layout-align="center center">
+          <md-input-container class="filters__container" layout="column" layout-align="end center">
+            <label class="expense__label">Filtruj Czynności:</label>
+            <md-select class="filters__select" ng-model="filterChurch">
+              <md-option value="" >wszystkie</md-option>
+              <md-option value="wykonane">wykonane</md-option>
+              <md-option value="niewykonane">niewykonane</md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container class="filters__container" layout="row" layout-align="center center">
+            <label>Sortuj Datę:</label>
+              <md-select class="filters__select" ng-model="utcChurch">
+                <md-option value="">None</md-option>
+                <md-option value="utc">Rosnąco</md-option>
+                <md-option value="-utc">Malejąco</md-option>
+              </md-select>
+          </md-input-container>
+        </div>
+        <div class="actions__content" ng-repeat="action in actions.modelChurch | filter:filterActions(filterChurch) | orderBy:utcChurch track by $index" layout="row" layout-align="center center">
+          <img class="actions__img" src="./public/img/cancel-mark.svg" alt="down-arrow" title="Usuń Czynność: {{action.name}}" ng-click="deleteAction(action)">
+          <p flex="60" class="action__paragraph" layout="row" layout-align="center center" title="Edytuj Czynność: {{action.name}}" ng-click="editAction(action)">{{action.name}}</p>
+          <p flex="40" class="action__paragraph" layout="row" layout-align="center center" title="Edytuj Czynność: {{action.name}}" ng-click="editAction(action)">{{action.date}}</p>
+        </div>
       </div>
-      
+      <div class="actions__wrapper">
+        <div class="actions__title" layout="row" layout-align="center end">
+          <img class="actions__img" src="./public/img/wedding_c.svg" alt="calendar">
+          <p class="actions__paragraph">Ogólne</p>
+        </div>
+        <div class="actions__filters" layout="row" layout-align="center center">
+          <md-input-container class="filters__container" layout="column" layout-align="end center">
+            <label class="expense__label">Filtruj Czynności:</label>
+            <md-select class="filters__select" ng-model="filterGeneral">
+              <md-option value="" >wszystkie</md-option>
+              <md-option value="wykonane">wykonane</md-option>
+              <md-option value="niewykonane">niewykonane</md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container class="actions__filters" layout="row" layout-align="center center">
+            <label>Sortuj Datę:</label>
+              <md-select class="actions__select" ng-model="utcGeneral">
+                <md-option value="">None</md-option>
+                <md-option value="utc">Rosnąco</md-option>
+                <md-option value="-utc">Malejąco</md-option>
+              </md-select>
+          </md-input-container>
+        </div>
+        <div class="actions__content" ng-repeat="action in actions.modelGeneral | filter:filterActions(filterGeneral) | orderBy:utcGeneral track by $index" layout="row" layout-align="center center">
+          <img class="actions__img" src="./public/img/cancel-mark.svg" alt="down-arrow" title="Usuń Czynność: {{action.name}}" ng-click="deleteAction(action)">
+          <p flex="60" class="action__paragraph" layout="row" layout-align="center center" title="Edytuj Czynność: {{action.name}}" ng-click="editAction(action)">{{action.name}}</p>
+          <p flex="40" class="action__paragraph" layout="row" layout-align="center center" title="Edytuj Czynność: {{action.name}}" ng-click="editAction(action)">{{action.date}}</p>
+        </div>
+      </div>
+      <div class="actions__wrapper">
+        <div class="actions__title" layout="row" layout-align="center end">
+          <img class="actions__img" src="./public/img/bride.svg" alt="calendar">
+          <p class="actions__paragraph">Panna Młoda</p>
+        </div>
+        <div class="actions__filters" layout="row" layout-align="center center">
+          <md-input-container class="filters__container" layout="column" layout-align="end center">
+            <label class="expense__label">Filtruj Czynności:</label>
+            <md-select class="filters__select" ng-model="filterBride">
+              <md-option value="" >wszystkie</md-option>
+              <md-option value="wykonane">wykonane</md-option>
+              <md-option value="niewykonane">niewykonane</md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container class="actions__filters" layout="row" layout-align="center center">
+            <label>Sortuj Datę:</label>
+              <md-select class="actions__select" ng-model="utcBride">
+                <md-option value="">None</md-option>
+                <md-option value="utc">Rosnąco</md-option>
+                <md-option value="-utc">Malejąco</md-option>
+              </md-select>
+          </md-input-container>
+        </div>
+        <div class="actions__content" ng-repeat="action in actions.modelBride | filter:filterActions(filterBride) | orderBy:utcBride track by $index" layout="row" layout-align="center center">
+          <img class="actions__img" src="./public/img/cancel-mark.svg" alt="down-arrow" title="Usuń Czynność: {{action.name}}" ng-click="deleteAction(action)">
+          <p flex="60" class="action__paragraph" layout="row" layout-align="center center" title="Edytuj Czynność: {{action.name}}" ng-click="editAction(action)">{{action.name}}</p>
+          <p flex="40" class="action__paragraph" layout="row" layout-align="center center" title="Edytuj Czynność: {{action.name}}" ng-click="editAction(action)">{{action.date}}</p>
+        </div>
+      </div>
+      <div class="actions__wrapper">
+        <div class="actions__title" layout="row" layout-align="center end">
+          <img class="actions__img" src="./public/img/groom.svg" alt="calendar">
+          <p class="actions__paragraph">Pan Młody</p>
+        </div>
+        <div class="actions__filters" layout="row" layout-align="center center">
+          <md-input-container class="filters__container" layout="column" layout-align="end center">
+            <label class="expense__label">Filtruj Czynności:</label>
+            <md-select class="filters__select" ng-model="filterGroom">
+              <md-option value="" >wszystkie</md-option>
+              <md-option value="wykonane">wykonane</md-option>
+              <md-option value="niewykonane">niewykonane</md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container class="actions__filters" layout="row" layout-align="center center">
+            <label>Sortuj Datę:</label>
+              <md-select class="actions__select" ng-model="utcGroom">
+                <md-option value="">None</md-option>
+                <md-option value="utc">Rosnąco</md-option>
+                <md-option value="-utc">Malejąco</md-option>
+              </md-select>
+          </md-input-container>
+        </div>
+        <div class="actions__content" ng-repeat="action in actions.modelGroom | filter:filterActions(filterGroom) | orderBy:utcGroom track by $index" layout="row" layout-align="center center">
+          <img class="actions__img" src="./public/img/cancel-mark.svg" alt="down-arrow" title="Usuń Czynność: {{action.name}}" ng-click="deleteAction(action)">
+          <p flex="60" class="action__paragraph" layout="row" layout-align="center center" title="Edytuj Czynność: {{action.name}}" ng-click="editAction(action)">{{action.name}}</p>
+          <p flex="40" class="action__paragraph" layout="row" layout-align="center center" title="Edytuj Czynność: {{action.name}}" ng-click="editAction(action)">{{action.date}}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
