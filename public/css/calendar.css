@@ -6,6 +6,10 @@
   padding:70px 0;
 }
 
+.earliest__list {
+  margin-bottom:20px;
+}
+
 .earliest__paragraph {
   font-size:45px;
   color: #0A0A0A;

@@ -1,4 +1,4 @@
-.budget__container, .budget__panel, .controlls__container, .controlls__filters, .budget__calculations, .budget__content, .controlls__buton {
+.budget__container, .budget__panel, .budget__controlls, .controlls__filters, .budget__calculations, .budget__content, .controlls__buton {
   width:100%;
 }
 
@@ -93,9 +93,6 @@ md-input-container label:not(.md-no-float):not(.md-container-ignore) {
   padding-left:20px;
 }
 
-.filters__expense, .filters__price {
-  width:200px;
-}
 
 @media only screen and (max-width: 600px) {
   .budget__paragraph {

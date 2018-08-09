@@ -341,8 +341,7 @@ app.post('/signUp', (req, res) => {
     return user.generateConfirmationLink();
   }).then((confirmationLink) => {
     res.send('registered');
-    const url  = `https://${req.headers.host}/confirmation/${confirmationLink}`;
-    // const url  = `http://${req.headers.host}/confirmation/${confirmationLink}`;
+    const url  = `http://${req.headers.host}/confirmation/${confirmationLink}`;
     let transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {

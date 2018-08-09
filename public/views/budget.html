@@ -10,10 +10,10 @@
             <p class="budget__paragraph budget__paragraph--sum" ng-if="expenses.expensesPaidAmount > 0"> {{expenses.diff}} zł</p>
           </div>
         </div>
-        <div class="controlls__container" layout="column" layout-align="center center">
+        <div class="budget__controlls" layout="column" layout-align="center center">
           <div class="controlls__filters" layout="row" layout-align="center center">
             <md-input-container class="filters__expense" layout="column" layout-align="end center">
-              <label class="expense__label">Filtruj Wydatki:</label>
+              <label >Filtruj Wydatki:</label>
               <md-select class="filters__select" ng-model="expensePaid">
                 <md-option value="">wszystkie</md-option>
                 <md-option value="opłacone">opłacone</md-option>
