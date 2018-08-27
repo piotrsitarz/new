@@ -11,7 +11,7 @@
         </md-input-container>
         <div class="guests__container">
           <div class="guests__wrapper" dragula='"first-bag"' dragula-model='guestsOfTable'>
-            <p ng-repeat="guest in guestsOfTable" class="guests__paragraph">{{$index+1}} {{guest.name}}</p>
+            <p ng-repeat="guest in guestsOfTable | filter  : searchingGuest" class="guests__paragraph" title="{{guest.name}}"><span class="guests__index">{{$index+1}}</span>{{'.   ' + guest.name}}</p>
           </div>
         </div>
       </div>
@@ -23,12 +23,13 @@
         <form name="addTable" layout="row" layout-align="center center" autocomplete="off">
           <md-button class="arrangement__button" ng-click="add(name)" ng-disabled="addTable.$invalid" flex="50">Dodaj Stół</md-button>
           <md-input-container class="arrangement__input-container" flex="50" md-no-float>
-            <input class="arrangement__input-search" ng-model="name" required type="text" placeholder="Nazwa Stołu">
+            <input class="arrangement__input-search" ng-model="name" required type="text" ng-pattern-restrict="^[A-Za-z]*$" placeholder="Nazwa Stołu">
           </md-input-container>
         </form>
         <div class="tables__container">
         </div>
       </div>
     </div>
+    <md-button class="arrangement__button" flex="100" ng-click="saveArrangement()" layout="row" layout-align="center center">Zapisz rozmieszczenie</md-button>
   </div>
 </div>

@@ -12,7 +12,7 @@
         </div>
         <div class="budget__controlls" layout="column" layout-align="center center">
           <div class="controlls__filters" layout="row" layout-align="center center">
-            <md-input-container class="filters__expense" layout="column" layout-align="end center">
+            <md-input-container class="filters__expense" layout="row" layout-align="center center">
               <label >Filtruj Wydatki:</label>
               <md-select class="filters__select" ng-model="expensePaid">
                 <md-option value="">wszystkie</md-option>
@@ -20,7 +20,7 @@
                 <md-option value="częściowo">częściowo</md-option>
               </md-select>
             </md-input-container>
-            <md-input-container class="filters__price" layout="column" layout-align="end center">
+            <md-input-container class="filters__price" layout="row" layout-align="center center">
               <label class="price__label">Sortuj Cenę:</label>
               <md-select class="filters__select" ng-model="price">
                 <md-option value="">None</md-option>

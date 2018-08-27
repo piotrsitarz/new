@@ -12,7 +12,7 @@ angular.module('weddingApp')
         templateUrl: 'public/views/expenses_add_dialog.html',
         parent: angular.element(document.body),
         clickOutsideToClose:true,
-        escapeToClose: false
+        escapeToClose: true
       });
       $mdDialog
         .show(alert)
@@ -28,8 +28,8 @@ angular.module('weddingApp')
         controller: 'dialogController',
         templateUrl: 'public/views/expenses_edit_dialog.html',
         parent: angular.element(document.body),
-        clickOutsideToClose:false,
-        escapeToClose: false
+        clickOutsideToClose:true,
+        escapeToClose: true
       });
       $mdDialog
         .show(alert)

@@ -217,6 +217,20 @@ app.get('/guests_list', authenticate, (req,res) => {
   })
 });
 
+app.post('/arrangement__update', authenticate, (req,res) => {
+  req.body.forEach((x)=>{
+    Guests.findOneAndUpdate({_id:x._id, _creator:x._creator}, {$set:{table:x.table}}, {new:true}).then((guest) => {
+    if (!guest) {
+      return res.status(404).send;
+    }
+    }).catch((e) => {
+      res.status(400).send;
+    })
+  });
+  res.send('updated');
+});
+
+
 app.post('/expenses__add', authenticate, (req,res) => {
   req.body._creator =  req.user._id;
   const expense = new Expenses(req.body);
@@ -376,8 +390,7 @@ app.get('/confirmation/:emailToken', (req, res) => {
      console.log('Something wrong when updating data!');
      }
   });
-  res.redirect(`https://${req.header('host')}`);
-  // res.redirect(`http://${req.header('host')}`);
+  res.redirect(`http://${req.header('host')}`);
 });
 
 app.post('/login', (req,res) => {

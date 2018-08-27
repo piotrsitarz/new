@@ -18,15 +18,20 @@
   height:500px;
   width:500px;
   position:relative;
+}
+
+.login__whiteframe:hover {
   background-color: rgb(250,250,250,0.4);
 }
 
 .login__button {
-  background:#F0EFEA;
+  color:white;
+  background:#D4D4D4;
 }
 
 .md-button.login__button:not([disabled]):hover {
-  background:#E2E0D6;
+  background:#BABABA;
+  font-weight:bold;
 }
 
 form {
@@ -44,32 +49,42 @@ md-nav-bar {
   top:0;
 }
 
-md-nav-bar md-nav-ink-bar {
-  background: #063D79;
+md-nav-bar .md-nav-bar {
+  border:none;
 }
 
-.md-nav-bar {
-  border-style:none;
+md-nav-bar md-nav-ink-bar {
+  background:none;
+  box-shadow: 0 0 5px rgba(121,121,121, 1);
+}
+
+md-nav-bar .md-button._md-nav-button.md-unselected {
+  color:#DCDCDC;
+  font-weight:normal;
+}
+
+md-nav-bar .md-button._md-nav-button.md-unselected:hover {
+  color:black;
 }
 
 .md-button._md-nav-button {
-  color:#030303;
-  font-weight:bold;
+  color:black;
   font-size:22px;
+  font-weight:bold;
 }
 
 md-input-container .login__input {
- border-color:#063D79;
- color:black;
+ border-color:#5E5F5F;
 }
 
 md-input-container.login__input-container label {
   color:black;
   font-size:18px;
+  font-weight:bold;
 }
 
 md-input-container:not(.md-input-invalid).md-input-focused .login__input {
- border-color:#063D79;
+  border-color:#5E5F5F;
 }
 
 md-input-container:not(.md-input-invalid).md-input-focused.login__input-container label, md-input-container.login__input-container.md-input-has-value label {

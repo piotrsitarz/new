@@ -4,7 +4,6 @@
 }
 
 .arrangement__guests, .arrangement__tables {
-  text-align:center;
   padding-top:40px;
 }
 
@@ -39,22 +38,19 @@ md-input-container:not(.md-input-invalid).md-input-focused .arrangement__input-s
 }
 
 .arrangement__button {
-  background:#5B607B;
+  background:#D4D4D4;
   color:white;
   padding:5px 0;
-  margin:6px 0 42px 0;
+  margin:42px 0px;
+  width:100%;
 }
 
 .arrangement__button:not([disabled]):hover {
-  background:#7A7E94
+  background:#BABABA;
 }
 
 .md-button[disabled].arrangement__button {
   background:rgba(158,158,158,0.2);
-}
-
-.guests__wrapper, .tables__container {
-    border-top:1px solid #5B607B;
 }
 
 .guests__wrapper {
@@ -62,47 +58,41 @@ md-input-container:not(.md-input-invalid).md-input-focused .arrangement__input-s
   width:100%;
 }
 
-.guests__paragraph:first-child {
-  border-top: 1px solid #F6F7FE;
-}
-
-.guestsList__content:last-child {
-  margin-bottom:40px;
+.guests__paragraph:hover,  .table__guest:hover {
+  cursor:pointer;
+  box-shadow:0 0 5px rgba(121,121,121, 1);
+  border:2px solid rgba(121,121,121, 1);
+  font-weight:bold;
 }
 
 .guests__paragraph, .table__guest {
-  color: black;
-  font-size: 24px;
-  font-family: 'Cardo', serif;
-  padding-left: 10px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  border-bottom: 1px solid #F6F7FE;
+  padding:10px 0 10px 10px;
+  border-bottom:1px solid #DCDCDC;
+  color:black;
+  font-size:24px;
+  font-family:'Cardo', serif;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 
- p.table__guest {
+.guests__paragraph:last-child {
+  margin-bottom:70px;
+}
+
+.guests__index{
+  font-family:Roboto,Helvetica Neue,sans-serif;
+}
+
+ .table__guest {
   width:90%;
-}
-
-.guests__paragraph {
-  width:100%;
-}
-
-.guests__paragraph:hover,  p.table__guest:hover {
-  cursor:pointer;
-  box-shadow: 0 0 5px rgba(246, 247, 254, 1);
-  border: 2px solid rgba(246, 247, 254, 1);
-  font-weight:bold;
 }
 
 .table__guests {
   box-sizing: border-box;
   width:80%;
-  background:#AFB6E1;
-  border:1px solid #818AC4;
+  background:#FFFFFF;
+  border:1px solid #5E5F5F;
   min-height:200px;
   padding:15px 0;
 }

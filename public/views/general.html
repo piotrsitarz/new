@@ -3,14 +3,14 @@
     <div class="views__main" layout="column" layout-align="center center">
       <div class="main__date" layout="column" layout-align="center center">
         <div class="date__counter" layout="row" layout-align="center center">
-          <img class="date__img" src="./public/img/hourglass.svg" alt="hourglass">
-          <p class="date__value">{{countdownTimer}}</p>
+          <img class="date__img" flex="20" src="./public/img/hourglass.svg" alt="hourglass">
+          <p class="date__value" flex="80" layout="row" layout-align="center center" >{{countdownTimer}}</p>
         </div>
-        <div class="date__picker" moment-picker="dateOfActionText" format="YYYY dddd D MMMM HH:[00]" change="updateDateOfWedding(dateOfActionText, dateOfWedding)" layout="row" layout-align="center center">
-          <img class="date__img" src="./public/img/calendar.svg" alt="calendar">
-          <p class="date__title">Data Ślubu: </p>
+        <div class="date__picker" moment-picker="dateOfActionText" format="YYYY dddd D MMMM HH:[00]" change="updateDateOfWedding(dateOfActionText, dateOfWedding)" layout="row" layout-align="center center" tabindex="0">
+          <img class="date__img" flex="20" src="./public/img/calendar.svg" alt="calendar">
+          <p class="date__title" flex="80">Data Ślubu: </p>
         </div>
-        <p class="date__value date__value--padding" ng-model="dateOfWedding">{{dateOfWedding}}</p>
+        <p class="date__value" ng-model="dateOfWedding" layout="row" layout-align="center center">{{dateOfWedding}}</p>
       </div>
       <div class="main__places" layout="row" layout-align="center center" layout-sm="column" layout-xs="column">
         <div class="places__container" layout="column" layout-align="center center">
@@ -19,7 +19,7 @@
             <p class="places__title">Miejsce Ślubu: </p>
           </div>
           <div id="weddingVenue"></div>
-          <div class="places__input" layout="row" layout-align="center center">
+          <div class="places__input" layout="row" layout-align="start center">
             <p class="places__value" editable-text="weddingVenue" onbeforesave="updateWeddingVenue($data)">{{weddingVenue}}</p>
           </div>
         </div>
@@ -29,7 +29,7 @@
             <p class="places__title">Miejsce Wesela: </p>
           </div>
           <div id="weddingPartyVenue"></div>
-          <div class="places__input" layout="row" layout-align="center center">
+          <div class="places__input" layout="row" layout-align="start center">
             <p class="places__value" editable-text="weddingPartyVenue" onbeforesave="updateWeddingPartyVenue($data)">{{weddingPartyVenue}}</p>
           </div>
         </div>

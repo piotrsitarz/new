@@ -8,6 +8,11 @@ const Guests = mongoose.model('Guests',{
         trim: true,
         unique:true,
     },
+    table: {
+      type: String,
+      required: true,
+      default: 'none'
+    },
     _creator: {
       type: mongoose.Schema.Types.ObjectId,
       required:true,

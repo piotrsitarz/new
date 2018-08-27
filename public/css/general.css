@@ -1,74 +1,98 @@
+.main__date, .places__weddingVenue, .places__weddingPartyVenue{
+  width:100%;
+}
+
 .views__main {
   padding-top:70px;
 }
 
 .date__counter {
-  padding:20px 0 70px 0;
-}
-
-.date__counter img.date__img {
-    height:100px;
-}
-
-.date__counter p {
-  font-size:38px;
-  font-weight:bold;
+  min-width:500px;
 }
 
 .date__picker {
+  margin-top: 15px;
   padding:15px 0;
+  min-width:500px;
 }
 
 .date__picker:focus, .date__picker:active {
   border:none;
-  outline: none;
-}
-
-.date__value.date__value--green {
-  color:#B3E48B;
+  outline:none;
 }
 
 .main__places {
   width:100%;
-  padding:70px 0;
 }
 
 .places__container {
   width:50%;
 }
 
-.places__title, .date__title {
+.places__title{
   color:black;
   font-size:32px;
   font-weight:bold;
-  font-family: 'Lora', serif;
+  font-family:'Lora', serif;
 }
 
-.places__value, .date__value {
-  padding-left:5px;
-  font-size:32px;
-  text-decoration:none;
+.places__input {
+  height:100px;
+  width:90%;
+}
+
+.date__title, .places__value {
+  color:white;
+  background:#D4D4D4;
+  cursor:pointer;
+  min-height:44px;
+  line-height:44px;
   text-align:center;
-  font-family: 'Cardo', serif;
-  color:black;
+  border-radius:2px;
+  font-weight:500;
+  font-size:14px;
+  text-transform:uppercase;
 }
 
-.places__weddingVenue, .places__weddingPartyVenue {
+.places__value {
   width:100%;
 }
 
-img.places__img, img.date__img {
+.places__value:hover {
+  background:#BABABA;
+}
+
+.date__title:hover {
+  background:#BABABA;
+}
+
+.date__value {
+  /* padding-left:50px; */
+  font-size:38px;
+  text-decoration:none;
+  text-align:center;
+  font-family:'Cardo', serif;
+  color:black;
+  overflow-wrap:break-word;
+  font-weight:bold;
+}
+
+img.places__img {
   height:70px;
   padding-right:20px;
 }
 
+img.date__img {
+  height:70px;
+  width:100px;
+}
 
 #weddingVenue, #weddingPartyVenue {
   height:400px;
   width:90%;
-  border-radius: 5px;
-  border: 1px solid #5E5F5F;
-  margin:15px 0;
+  border-radius:5px;
+  border:1px solid #5E5F5F;
+  margin-top:15px;
 }
 
  .editable-click {
@@ -77,12 +101,13 @@ img.places__img, img.date__img {
 
 .editable-click:hover {
   font-weight:bold;
-  color:black;
+  color:white;
   cursor:pointer;
 }
 
 .editable-wrap {
   text-align:center;
+  width:100%;
 }
 
 .editable-controls input {
@@ -93,7 +118,7 @@ img.places__img, img.date__img {
 }
 
 .editable-input.editable-has-buttons {
-  width:150px;
+  width:90%;
   background:transparent;
   border:none;
   text-align:center;
@@ -104,7 +129,7 @@ img.places__img, img.date__img {
 }
 
 .editable-buttons  {
-  vertical-align: middle;
+  display:block
 }
 
 .editable-buttons button {
@@ -113,8 +138,6 @@ img.places__img, img.date__img {
   min-width:70px;
   min-height: 32px;
   line-height: 32px;
-  padding:0 10px;
-  margin-left:10px;
   vertical-align: middle;
   -webkit-box-align: center;
   align-items: center;
@@ -143,6 +166,26 @@ img.places__img, img.date__img {
   color: white;
 }
 
+.moment-picker td.selected {
+  color:white;
+  background-image:linear-gradient(#D4D4D4,#BABABA);
+  text-shadow:none;
+}
+
+.moment-picker table {
+  border-collapse:collapse;
+  border-spacing:0;
+  width:500px;
+  table-layout:fixed;
+  height:280px;
+}
+
+.moment-picker {
+  position:fixed;
+  top:-200px;
+  left:0;
+}
+
 @media only screen and (max-width: 960px) {
 
   .places__container {
@@ -151,6 +194,40 @@ img.places__img, img.date__img {
 
   .places__weddingPartyVenue {
     padding-top:40px;
+  }
+
+}
+
+@media only screen and (max-width: 550px) {
+
+  .moment-picker table {
+    width:98%;
+  }
+
+  .date__counter {
+    min-width:98%;
+  }
+
+  .date__picker {
+    min-width:320px;
+  }
+
+  img.date__img {
+    display:none;
+  }
+
+  img.places__img {
+    padding-right:10px;
+  }
+
+  .date__value {
+    display:block;
+    width:80vw;
+  }
+
+  .main__places {
+    margin-top:40px;
+    width:98%;
   }
 
 }

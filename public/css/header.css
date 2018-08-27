@@ -29,12 +29,13 @@
 
 .header__button {
   height:30px;
+  color:white;
   background:#E2E0D6;
   margin-right:15px;
 }
 
 .header__button:hover {
-  background:#F0EFEA;
+  /* background:#F0EFEA; */
 }
 
 

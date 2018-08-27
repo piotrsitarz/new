@@ -1,5 +1,5 @@
 <md-dialog aria-label="Nowy gość">
-  <form name="editExpenseForm" ng-cloak autocomplete="off">
+  <form name="editExpenseForm" ng-cloak autocomplete="off" class="dialog__form">
     <md-toolbar>
       <div class="md-toolbar-tools">
         <h2>Edytuj Wydatek</h2>
@@ -14,12 +14,12 @@
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
-        <div class="date__picker" moment-picker="dateOfEditingActionText" format="YYYY dddd D MMMM HH:[00]" change="updateEditingDateOfAction(dateOfEditingActionText, actions.toEdit.date)" layout="row" layout-align="center center">
-          <p class="date__value date__value--padding" ng-model="actions.toEdit.date">{{actions.toEdit.date}}</p>
+        <div class="date__picker" moment-picker="dateOfEditingActionText" format="YYYY dddd D MMMM HH:[00]" change="updateEditingDateOfAction(dateOfEditingActionText, actions.toEdit.date)" layout="row" layout-align="center center" tabindex="0">
+          <p class="date__value" ng-model="actions.toEdit.date">{{actions.toEdit.date}}</p>
         </div>
         <md-input-container class="filters__expense" layout="column" layout-align="end center">
           <label >Typ Czynności:</label>
-          <md-select ng-model="actions.toEdit.type" ng-change="checkActionsChanges(action)" required>
+          <md-select ng-model="actions.toEdit.type" ng-change="checkActionsChanges(action)" class="actions__select" required>
             <md-option value="Kościół">Kościół</md-option>
             <md-option value="Ogólne">Ogólne</md-option>
             <md-option value="Panna Młoda">Panna Młoda</md-option>
@@ -28,7 +28,7 @@
         </md-input-container>
         <md-input-container class="filters__expense" layout="column" layout-align="end center">
           <label>Wykonano:</label>
-          <md-select ng-model="actions.toEdit.done" ng-change="checkActionsChanges(action)" required>
+          <md-select ng-model="actions.toEdit.done" ng-change="checkActionsChanges(action)" class="actions__select" required>
             <md-option value="true">Tak</md-option>
             <md-option value="false">Nie</md-option>
           </md-select>

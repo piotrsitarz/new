@@ -47,6 +47,16 @@ md-input-container label:not(.md-no-float):not(.md-container-ignore) {
   padding:0;
 }
 
+.filters__select {
+  display: block;
+  position: relative;
+  vertical-align: middle;
+}
+
+.filters__expense {
+  width:200px;
+}
+
 .form__label, .form__input {
   text-align:center;
 }
@@ -61,6 +71,33 @@ md-input-container label:not(.md-no-float):not(.md-container-ignore) {
   white-space:nowrap;
   display:block;
   text-align:center;
+}
+
+.addExpense__input-container {
+  width:100%;
+}
+
+md-input-container .addExpense__input  {
+ border-color:#5E5F5F;
+}
+
+md-input-container.addExpense__input-container label {
+  color:black;
+  font-size:18px;
+  font-weight:bold;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused .addExpense__input  {
+  border-color:#5E5F5F;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused.addExpense__input-container label, md-input-container.addExpense__input-container.md-input-has-value label {
+ color:black;
+}
+
+md-dialog-delete {
+  background-color: #8B8B86;
+  padding: 25px;
 }
 
 .budget__content {
