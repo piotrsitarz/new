@@ -357,11 +357,17 @@ app.post('/signUp', (req, res) => {
     res.send('registered');
     const url  = `http://${req.headers.host}/confirmation/${confirmationLink}`;
     let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
         service: 'Gmail',
         auth: {
             user: '7testing7weddingapp7@gmail.com',
             pass: 'weddingapp123'
-        }
+        },
+        tls: {
+            rejectUnauthorized: false
+         }
     });
 
     let mailOptions = {
