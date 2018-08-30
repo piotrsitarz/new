@@ -20,7 +20,7 @@ defaultExpenses = [{
       price:2000,
       paid:0
     },{
-      name:'Orkiestra, DJ',
+      name:'Orkiestra / DJ',
       price:4000,
       paid:0
     },{
@@ -32,7 +32,7 @@ defaultExpenses = [{
       price:500,
       paid:0
     },{
-      name:'Fotograf, Kamerzysta',
+      name:'Fotograf / Kamerzysta',
       price:2000,
       paid:0
     },{
@@ -44,7 +44,7 @@ defaultExpenses = [{
       price:3000,
       paid:0
     },{
-      name:'Fryzura Panny Młodej, Makijaż, Manicure',
+      name:'Fryzura Panny Młodej / Makijaż / Manicure',
       price:800,
       paid:0
     },{

@@ -1,5 +1,12 @@
 <div class="views__bg">
   <div class="views__wrapper">
+    <div class="views__tools" layout="row" layout-align="end end">
+      <img class="places__img" src="./public/img/print.svg" onclick="window.print()" title="drukuj" alt="print">
+      <img class="places__img" src="./public/img/download.svg" title="pobierz csv z listy gości" alt="download as csv"
+           ng-json-export-excel data="expenses.model"
+           nested-data-property="nested" report-fields="{index:'index', name: 'Nazwa Wydatku', price: 'Koszt Wydatku', paid: 'Wpłacono'}"
+           nested-report-fields="" filename="'lista-wydatków'">
+    </div>
     <div class="budget__container" layout="column" layout-align="center center">
       <div class="budget__panel" layout="column" layout-align="center center">
         <div class="budget__ammount" layout="row" layout-align="center center" layout-xs="column">

@@ -19,7 +19,9 @@ angular.module('weddingApp')
           factory.earliest = factory.earliest.filter(function(action){
             return action.utc !== 0;
           });
-          factory.model.forEach(function(action){
+          factory.model.forEach(function(action, index){
+            action.nested = [];
+            action.index = index + 1;
             if (action.type === 'Kościół') {
               factory.modelChurch.push(action);
             }else if (action.type === 'Ogólne') {
@@ -30,6 +32,7 @@ angular.module('weddingApp')
               factory.modelGroom.push(action);
             }
           });
+                    console.log(factory.model);
           var counter = 0;
           var i;
           factory.earliestModel = [];

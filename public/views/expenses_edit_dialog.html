@@ -9,7 +9,7 @@
       <div class="md-dialog-content" layout="column" layout-align="center center">
         <md-input-container class="addGuest__input-container">
           <label>Nazwa Wydatku</label>
-          <input class="addGuest__input" required type="text" ng-model="expenses.toEdit.name" name="name" ng-change="checkExpenseChanges()"/>
+          <input class="addGuest__input" required type="text" ng-model="expenses.toEdit.name" ng-pattern-restrict="^[^,]+$" name="name" ng-change="checkExpenseChanges()"/>
           <div ng-messages="editExpenseForm.name.$error" role="alert">
             <div ng-message="required">This is required.</div>
           </div>

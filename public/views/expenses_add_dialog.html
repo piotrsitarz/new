@@ -2,14 +2,14 @@
   <form name="addExpenseForm" ng-cloak autocomplete="off">
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2>Nowy Gość</h2>
+        <h2>Nowy Wydatek</h2>
       </div>
     </md-toolbar>
     <md-dialog-content>
       <div class="md-dialog-content" layout="column" layout-align="center center">
         <md-input-container class="addExpense__input-container">
           <label>Nazwa Wydatku</label>
-          <input class="addExpense__input" required type="text" ng-model="expense.name" name="name" md-autofocus />
+          <input class="addExpense__input" required type="text" ng-model="expense.name" ng-pattern-restrict="^[^,]+$"  name="name" md-autofocus />
           <div ng-messages="addExpenseForm.name.$error" role="alert">
             <div ng-message="required">This is required.</div>
           </div>

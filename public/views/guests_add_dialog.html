@@ -9,7 +9,7 @@
       <div class="md-dialog-content" layout="column" layout-align="center center">
         <md-input-container class="addGuest__input-container">
           <label>Imię i Nazwisko</label>
-          <input class="addGuest__input" required type="text" ng-model="guest.name" name="name" md-autofocus />
+          <input class="addGuest__input" required type="text" ng-pattern-restrict="^[^,]+$" ng-model="guest.name" name="name" md-autofocus />
           <div ng-messages="addGuestForm.name.$error" role="alert">
             <div ng-message="required">This is required.</div>
           </div>

@@ -2,7 +2,7 @@
 
 angular.module('weddingApp')
 
-  .controller('calendarController', ['$scope','$http','$mdDialog','actions', function($scope,$http,$mdDialog,actions) {
+  .controller('calendarController', ['$scope','$mdDialog','actions', function($scope,$mdDialog,actions) {
 
     $scope.actions = actions;
 
@@ -12,7 +12,7 @@ angular.module('weddingApp')
         templateUrl: 'public/views/actions_add_dialog.html',
         parent: angular.element(document.body),
         clickOutsideToClose:true,
-        escapeToClose: false
+        escapeToClose:true
       });
       $mdDialog
         .show(alert)
@@ -28,8 +28,8 @@ angular.module('weddingApp')
         controller: 'dialogController',
         templateUrl: 'public/views/actions_edit_dialog.html',
         parent: angular.element(document.body),
-        clickOutsideToClose:false,
-        escapeToClose: false
+        clickOutsideToClose:true,
+        escapeToClose:true
       });
       $mdDialog
         .show(alert)
@@ -45,7 +45,7 @@ angular.module('weddingApp')
         templateUrl: 'public/views/actions_delete_dialog.html',
         parent: angular.element(document.body),
         clickOutsideToClose:true,
-        escapeToClose: false
+        escapeToClose:true
       });
       $mdDialog
         .show(alert)

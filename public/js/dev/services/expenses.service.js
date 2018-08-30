@@ -2,13 +2,18 @@
 
 angular.module('weddingApp')
 
-  .factory('expenses', ['$http','$mdDialog', function($http,$mdDialog) {
+  .factory('expenses', ['$http', function($http) {
 
       var factory = {};
 
       factory.get = function() {
         $http.get('/expenses_list').then(function successCallback(response) {
           factory.model = response.data;
+          factory.model.forEach(function(x, index){
+            x.nested = [];
+            x.index = index + 1;
+          });
+          console.log(factory.model);
           factory.expensesAmount = 0;
           factory.expensesPaidAmount = 0;
           factory.model.forEach(function(expense){

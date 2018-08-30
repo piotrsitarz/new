@@ -9,12 +9,12 @@
       <div class="md-dialog-content" layout="column" layout-align="center center">
         <md-input-container class="addExpense__input-container">
           <label>Nazwa Czynności</label>
-          <input class="addExpense__input" required type="text" ng-model="actions.toEdit.name" name="name" ng-change="checkActionsChanges(action)" md-autofocus />
+          <input class="addExpense__input" required type="text" ng-model="actions.toEdit.name" name="name" ng-pattern-restrict="^[^,]+$" ng-change="checkActionsChanges(action)" md-autofocus />
           <div ng-messages="addActionForm.name.$error" role="alert">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
-        <div class="date__picker" moment-picker="dateOfEditingActionText" format="YYYY dddd D MMMM HH:[00]" change="updateEditingDateOfAction(dateOfEditingActionText, actions.toEdit.date)" layout="row" layout-align="center center" tabindex="0">
+        <div class="date__picker" moment-picker="dateOfEditingActionText" format="YYYY dddd D MMMM HH:mm" change="updateEditingDateOfAction(dateOfEditingActionText, actions.toEdit.date)" layout="row" layout-align="center center" tabindex="0">
           <p class="date__value" ng-model="actions.toEdit.date">{{actions.toEdit.date}}</p>
         </div>
         <md-input-container class="filters__expense" layout="column" layout-align="end center">
@@ -32,6 +32,10 @@
             <md-option value="true">Tak</md-option>
             <md-option value="false">Nie</md-option>
           </md-select>
+        </md-input-container>
+        <md-input-container class="addExpense__input-container">
+          <label>Notatka</label>
+          <input class="addExpense__input" type="text" ng-model="actions.toEdit.note" name="note" ng-pattern-restrict="^[^,]+$" ng-change="checkActionsChanges(action)"/>
         </md-input-container>
       </div>
     </md-dialog-content>

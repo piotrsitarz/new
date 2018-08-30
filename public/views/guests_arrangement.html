@@ -1,5 +1,12 @@
 <div class="views__bg">
-  <div class="views__wrapper" layout="column" layout-align="center center">
+  <div class="views__wrapper">
+    <div class="views__tools" layout="row" layout-align="end end">
+      <img class="places__img" src="./public/img/print.svg" onclick="window.print()" title="drukuj" alt="print">
+      <img class="places__img" src="./public/img/download.svg" title="pobierz csv z listy gości" alt="download as csv"
+           ng-json-export-excel data="guestList.model"
+           nested-data-property="nested" report-fields="{index:'index', name: 'Nazwa Gościa', table: 'Stół'}"
+           nested-report-fields="" filename="'lista-gości'">
+    </div>
     <div class="arrangement__container" layout="row">
       <div class="arrangement__guests" layout="column" flex="50">
         <div class="arrangement__header" layout="row" layout-align="center center">

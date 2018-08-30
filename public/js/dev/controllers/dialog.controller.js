@@ -2,7 +2,7 @@
 
 angular.module('weddingApp')
 
-  .controller('dialogController', ['$scope','$http','$mdDialog','$cookies','$timeout','guestList','expenses','actions','moment', function($scope,$http,$mdDialog,$cookies,$timeout,guestList,expenses,actions,moment) {
+  .controller('dialogController', ['$scope','$http','$mdDialog','$timeout','guestList','expenses','actions','moment', function($scope,$http,$mdDialog,$timeout,guestList,expenses,actions,moment) {
 
     $scope.guestList = guestList;
     $scope.expenses = expenses;
@@ -250,7 +250,8 @@ angular.module('weddingApp')
       };
 
       $scope.checkActionsChanges = function() {
-        if (actions.beforeEdit.name === actions.toEdit.name && actions.beforeEdit.date === actions.toEdit.date && actions.beforeEdit.type === actions.toEdit.type && actions.beforeEdit.done === actions.toEdit.done) {
+        if (actions.beforeEdit.name === actions.toEdit.name && actions.beforeEdit.date === actions.toEdit.date && actions.beforeEdit.type === actions.toEdit.type && actions.beforeEdit.done === actions.toEdit.done
+            && actions.beforeEdit.note === actions.toEdit.note) {
           $scope.actionsChanged = false;
         } else {
           $scope.actionsChanged = true;

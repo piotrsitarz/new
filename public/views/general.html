@@ -1,12 +1,19 @@
 <div class="views__bg">
   <div class="views__wrapper">
+    <div class="views__tools" layout="row" layout-align="end end">
+      <img class="places__img" src="./public/img/print.svg" onclick="window.print()" title="drukuj" alt="print">
+      <img class="places__img" src="./public/img/download.svg" title="pobierz csv z informacji ogólnych" alt="download as csv"
+           ng-json-export-excel data=" [{id: '1', date: dateOfWedding, weddingVenue: weddingVenue, weddingPartyVenue: weddingPartyVenue, nested:[]}]"
+           nested-data-property="nested" report-fields="{id: 'ID', date: 'Data Ślubu', weddingVenue: 'Miejsce Ślubu',  weddingPartyVenue: 'Miejsce Wesela'}"
+           nested-report-fields="" filename="'informacje-ogólne'">
+    </div>
     <div class="views__main" layout="column" layout-align="center center">
       <div class="main__date" layout="column" layout-align="center center">
         <div class="date__counter" layout="row" layout-align="center center">
           <img class="date__img" flex="20" src="./public/img/hourglass.svg" alt="hourglass">
           <p class="date__value" flex="80" layout="row" layout-align="center center" >{{countdownTimer}}</p>
         </div>
-        <div class="date__picker" moment-picker="dateOfActionText" format="YYYY dddd D MMMM HH:[00]" change="updateDateOfWedding(dateOfActionText, dateOfWedding)" layout="row" layout-align="center center" tabindex="0">
+        <div class="date__picker" moment-picker="dateOfActionText" format="YYYY dddd D MMMM HH:mm" change="updateDateOfWedding(dateOfActionText, dateOfWedding)" layout="row" layout-align="center center" tabindex="0">
           <img class="date__img" flex="20" src="./public/img/calendar.svg" alt="calendar">
           <p class="date__title" flex="80">Data Ślubu: </p>
         </div>

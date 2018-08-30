@@ -2,7 +2,7 @@
 
 angular.module('weddingApp')
 
-  .controller('headerController', ['$scope','$state','$cookies','$timeout','$location', '$mdSidenav', function($scope,$state,$cookies,$timeout,$location, $mdSidenav) {
+  .controller('headerController', ['$scope','$state','$cookies','$location', '$mdSidenav', function($scope,$state,$cookies,$location, $mdSidenav) {
 
     function buildToggler(componentId) {
       return function() {

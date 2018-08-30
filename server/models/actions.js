@@ -14,6 +14,10 @@ const Actions = mongoose.model('Actions',{
         minlength: 1,
         trim: true
     },
+    note: {
+        type: String,
+        trim: true
+    },
     date: {
         type: String,
         required: true

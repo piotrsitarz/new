@@ -1,8 +1,7 @@
 'use strict';
-var app = angular.module('weddingApp', ['ngMessages','ngMaterial', 'xeditable','ngCookies','ui.router','moment-picker','angularMoment','ngPatternRestrict',angularDragula(angular)])
+var app = angular.module('weddingApp', ['ngMessages','ngMaterial', 'xeditable','ngCookies','ui.router','moment-picker','angularMoment','ngPatternRestrict','ngJsonExportExcel',angularDragula(angular)])
 
   .config(['$stateProvider','$urlRouterProvider','$locationProvider','momentPickerProvider', function ($stateProvider,$urlRouterProvider,$locationProvider,momentPickerProvider) {
-
 
     $locationProvider.html5Mode({
       enabled: true,

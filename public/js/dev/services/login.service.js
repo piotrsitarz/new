@@ -43,7 +43,6 @@ angular.module('weddingApp')
           if (response.data.account === 'confirmed') {
               $cookies.put('auth', response.data.token);
               guestList.get();
-              // $window.location.href = '/main';
               $state.go('main');
           } else if (response.data.account === 'confirmEmail') {
               factory.userDoesntConfirmed();

@@ -2,9 +2,10 @@
 
 angular.module('weddingApp')
 
-  .controller('guestsArrangementController', ['$scope','$http','$compile','$parse','$mdDialog','dragulaService', function($scope,$http,$compile,$parse,$mdDialog,dragulaService) {
+  .controller('guestsArrangementController', ['$scope','$http','$compile','$parse','$mdDialog','dragulaService','guestList', function($scope,$http,$compile,$parse,$mdDialog,dragulaService,guestList) {
 
     $scope.tables = [];
+    $scope.guestList = guestList;
 
     $scope.getGuestList = function() {
       $http.get('/guests_list').then(function successCallback(response) {

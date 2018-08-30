@@ -12,7 +12,9 @@ angular.module('weddingApp')
           factory.model = response.data.guests;
           factory.guests = factory.model.length;
           factory.modelCopy = angular.copy(factory.model);
-          factory.model.forEach(function(x) {
+          factory.model.forEach(function(x, index) {
+            x.nested = [];
+            x.index = index + 1;
             if (x.checkboxs[0].partner) {
                 factory.guests++;
             }
@@ -23,11 +25,11 @@ angular.module('weddingApp')
               factory.filter(filter);
             })
           }
+          console.log(factory.model);
         });
       };
 
     factory.get();
-
 
       factory.getCheckbox = function(checkbox, array) {
         switch(checkbox) {
@@ -361,7 +363,6 @@ angular.module('weddingApp')
           }
         });
       };
-
 
       return factory;
 

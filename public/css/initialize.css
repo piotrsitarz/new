@@ -100,3 +100,12 @@ md-dialog .md-button.md-default-theme.md-primary {
   width:100%;
   min-height:1000px;
 }
+
+.views__tools img {
+  width:40px;
+}
+
+.views__tools img:hover {
+  cursor:pointer;
+  opacity:0.4;
+}

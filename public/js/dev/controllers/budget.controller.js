@@ -2,7 +2,7 @@
 
 angular.module('weddingApp')
 
-  .controller('budgetController', ['$scope','$http','$mdDialog','expenses', function($scope,$http,$mdDialog,expenses) {
+  .controller('budgetController', ['$scope','$mdDialog','expenses', function($scope,$mdDialog,expenses) {
 
     $scope.expenses = expenses;
 

@@ -6,13 +6,13 @@ angular.module('weddingApp')
 
       function callCounter(weddingDate, currentDate) {
         $scope.dateOfWedding = weddingDate;
-        var dateOfWedding = moment(weddingDate, 'YYYY dddd D MMMM HH:[00]');
+        var dateOfWedding = moment(weddingDate, 'YYYY dddd D MMMM HH:mm');
         var now = moment(currentDate,'YYYY-MM-DD HH:mm:ss');
         $scope.countdownTimer = moment.duration(dateOfWedding.diff(now)).format('HH:mm:ss');
         var seconds = 0;
         $scope.interval = $interval(function() {
           seconds++
-          var dateOfWedding = moment(weddingDate, 'YYYY dddd D MMMM HH:[00]');
+          var dateOfWedding = moment(weddingDate, 'YYYY dddd D MMMM HH:mm');
           var now = moment(currentDate,'YYYY-MM-DD HH:mm:ss').add(seconds, 'seconds');
           $scope.countdownTimer = moment.duration(dateOfWedding.diff(now)).format('HH:mm:ss');
         }, 1000);

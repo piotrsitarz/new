@@ -9,12 +9,12 @@
       <div class="md-dialog-content" layout="column" layout-align="center center">
         <md-input-container class="addExpense__input-container">
           <label>Nazwa Czynności</label>
-          <input class="addExpense__input" required type="text" ng-model="action.name" name="name" ng-change="checkenableAddActionButton(action)" md-autofocus />
+          <input class="addExpense__input" required type="text" ng-model="action.name" name="name" ng-pattern-restrict="^[^,]+$" ng-change="checkenableAddActionButton(action)" md-autofocus />
           <div ng-messages="addActionForm.name.$error" role="alert">
             <div ng-message="required">This is required.</div>
           </div>
         </md-input-container>
-        <div class="date__picker" moment-picker="dateOfActionText"  format="YYYY dddd D MMMM HH:[00]" change="updateDateOfAction(dateOfActionText, action.date)" layout="row" layout-align="center center" ng-model-options="{ updateOn: 'blur'}" tabindex="0">
+        <div class="date__picker" moment-picker="dateOfActionText"  format="YYYY dddd D MMMM HH:mm" change="updateDateOfAction(dateOfActionText, action.date)" layout="row" layout-align="center center" ng-model-options="{ updateOn: 'blur'}" tabindex="0">
           <p class="date__value" ng-model="action.date">{{action.date}}</p>
         </div>
         <md-input-container class="filters__expense" layout="column" layout-align="end center">
@@ -25,6 +25,10 @@
             <md-option value="Panna Młoda">Panna Młoda</md-option>
             <md-option value="Pan Młody">Pan Młody</md-option>
           </md-select>
+        </md-input-container>
+        <md-input-container class="addExpense__input-container">
+          <label>Notatka</label>
+          <input class="addExpense__input" type="text" ng-model="action.note" name="note" ng-pattern-restrict="^[^,]+$" ng-change="checkenableAddActionButton(action)"/>
         </md-input-container>
       </div>
     </md-dialog-content>

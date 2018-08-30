@@ -1,5 +1,12 @@
 <div class="views__bg">
   <div class="views__wrapper">
+    <div class="views__tools" layout="row" layout-align="end end">
+      <img class="places__img" src="./public/img/print.svg" onclick="window.print()" title="drukuj" alt="print">
+      <img class="places__img" src="./public/img/download.svg" title="pobierz csv z listy gości" alt="download as csv"
+           ng-json-export-excel data="actions.model"
+           nested-data-property="nested" report-fields="{index:'index', name: 'Nazwa Czynności', type: 'Typ Czynności', date: 'Data Czynności', note: 'Notatka'}"
+           nested-report-fields="" filename="'lista-czynności'">
+    </div>
     <div class="actions__container" layout="column" layout-align="center center">
       <div class="actions__panel" layout="column" layout-align="center center">
         <div class="actions__earliest" layout="column" layout-align="center center">

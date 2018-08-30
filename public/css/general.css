@@ -10,9 +10,16 @@
   min-width:500px;
 }
 
-.date__picker {
-  margin-top: 15px;
+.date__counter p {
+  padding-right:70px;
+}
+
+.main__date .date__picker {
+  margin-top:15px;
   padding:15px 0;
+}
+
+.date__picker {
   min-width:500px;
 }
 
@@ -67,8 +74,7 @@
 }
 
 .date__value {
-  /* padding-left:50px; */
-  font-size:38px;
+  font-size:32px;
   text-decoration:none;
   text-align:center;
   font-family:'Cardo', serif;
@@ -186,6 +192,10 @@ img.date__img {
   left:0;
 }
 
+md-dialog {
+  max-width:98%;
+}
+
 @media only screen and (max-width: 960px) {
 
   .places__container {
@@ -206,6 +216,10 @@ img.date__img {
 
   .date__counter {
     min-width:98%;
+  }
+
+  .date__counter p {
+    padding-right:0;
   }
 
   .date__picker {
