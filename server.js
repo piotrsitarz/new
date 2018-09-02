@@ -417,21 +417,6 @@ app.post('/login', (req,res) => {
   });
 });
 
-app.get('/demo', (req,res) => {
-  let credential = {};
-  credential.account = 'confirmed';
-  User.findByCredentials('demo@email.com', 'demo123').then((user)=>{
-    if (user.confirmed) {
-      return user.generateAuthToken().then((token)=>{
-        credential.token = token;
-        res.send(credential);
-      });
-    }
-  }).catch((e)=>{
-    res.send(credential);
-  });
-});
-
 app.get('*', function(req, res) {
   res.redirect(`https://${req.header('host')}`);
 });

@@ -39,6 +39,7 @@ angular.module('weddingApp')
       };
 
       factory.do = function(account) {
+          console.log(account);
         $http.post('/login', account).then(function successCallback(response) {
           if (response.data.account === 'confirmed') {
               $cookies.remove('auth');
@@ -55,11 +56,23 @@ angular.module('weddingApp')
       };
 
       factory.demo = function() {
-        $http.get('/demo').then(function successCallback(response) {
-          $cookies.remove('auth');
-          $cookies.put('auth', response.data.token);
-          $state.go('main');
-        })
+        var account = {
+          email: "demo@email.com",
+          password: "demo123"
+        };
+        $http.post('/login', account).then(function successCallback(response) {
+          if (response.data.account === 'confirmed') {
+              $cookies.remove('auth');
+              $cookies.put('auth', response.data.token);
+              $state.go('main');
+          } else if (response.data.account === 'confirmEmail') {
+              factory.userDoesntConfirmed();
+          } else {
+              factory.userDoesntExist();
+          }
+          factory.account.email = '';
+          factory.account.password = '';
+        });
       }
 
       factory.changeNav = function(nav) {
