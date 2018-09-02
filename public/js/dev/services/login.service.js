@@ -39,7 +39,6 @@ angular.module('weddingApp')
       };
 
       factory.do = function(account) {
-          console.log(account);
         $http.post('/login', account).then(function successCallback(response) {
           if (response.data.account === 'confirmed') {
               $cookies.remove('auth');
