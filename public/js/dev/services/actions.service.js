@@ -32,7 +32,6 @@ angular.module('weddingApp')
               factory.modelGroom.push(action);
             }
           });
-                    console.log(factory.model);
           var counter = 0;
           var i;
           factory.earliestModel = [];

@@ -5,8 +5,7 @@ const Actions = mongoose.model('Actions',{
         type: String,
         required: true,
         minlength: 1,
-        trim: true,
-        unique:true
+        trim: true
     },
     type: {
         type: String,

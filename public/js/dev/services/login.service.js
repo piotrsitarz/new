@@ -2,7 +2,7 @@
 
 angular.module('weddingApp')
 
-  .factory('login', ['$http','$window','$cookies','$mdDialog','$state','guestList', function($http,$window,$cookies,$mdDialog,$state,guestList) {
+  .factory('login', ['$http','$window','$cookies','$mdDialog','$state', function($http,$window,$cookies,$mdDialog,$state) {
 
       var factory = {};
 
@@ -41,8 +41,8 @@ angular.module('weddingApp')
       factory.do = function(account) {
         $http.post('/login', account).then(function successCallback(response) {
           if (response.data.account === 'confirmed') {
+              $cookies.remove('auth');
               $cookies.put('auth', response.data.token);
-              guestList.get();
               $state.go('main');
           } else if (response.data.account === 'confirmEmail') {
               factory.userDoesntConfirmed();
@@ -53,6 +53,14 @@ angular.module('weddingApp')
           factory.account.password = '';
         });
       };
+
+      factory.demo = function() {
+        $http.get('/demo').then(function successCallback(response) {
+          $cookies.remove('auth');
+          $cookies.put('auth', response.data.token);
+          $state.go('main');
+        })
+      }
 
       factory.changeNav = function(nav) {
         if (nav === 'signUp' && factory.showLogin) {

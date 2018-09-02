@@ -5,8 +5,7 @@ const Expenses = mongoose.model('Expenses',{
         type: String,
         required: true,
         minlength: 1,
-        trim: true,
-        unique:true
+        trim: true
     },
     price: {
         type: Number,
@@ -22,7 +21,7 @@ const Expenses = mongoose.model('Expenses',{
     },
     _creator: {
         type: mongoose.Schema.Types.ObjectId,
-        required:true,
+        required:true
     }
 });
 

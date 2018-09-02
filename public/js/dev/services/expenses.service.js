@@ -13,7 +13,6 @@ angular.module('weddingApp')
             x.nested = [];
             x.index = index + 1;
           });
-          console.log(factory.model);
           factory.expensesAmount = 0;
           factory.expensesPaidAmount = 0;
           factory.model.forEach(function(expense){

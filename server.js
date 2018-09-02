@@ -268,9 +268,10 @@ app.get('/expenses_list', authenticate, (req,res) => {
     _creator: req.user._id
   }).then((expenses) => {
     if (expenses.length === 0) {
-        let basicExpenses = defaultExpenses;
+        let basicExpenses = defaultExpenses;;
         basicExpenses.forEach((x)=> {
           x._creator = req.user._id;
+          x._id = mongoose.Types.ObjectId();
         });
        Expenses.collection.insert(basicExpenses, (err, docs) => {
          if (err){
@@ -331,6 +332,7 @@ app.get('/actions_list', authenticate, (req,res) => {
         let basicActions = defaultActions;
         basicActions.forEach((x)=> {
           x._creator = req.user._id;
+          x._id = mongoose.Types.ObjectId();
         });
        Actions.collection.insert(basicActions, (err, docs) => {
          if (err){
@@ -356,10 +358,10 @@ app.post('/signUp', (req, res) => {
   }).then((confirmationLink) => {
     res.send('registered');
     const url  = `http://${req.headers.host}/confirmation/${confirmationLink}`;
+
     let transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587,
-      secure: false,
+        host: 'smtp.gmail.com',
+        service: 'Gmail',
         auth: {
             user: '7testing7weddingapp7@gmail.com',
             pass: 'weddingapp123'
@@ -409,6 +411,21 @@ app.post('/login', (req,res) => {
     }else  {
       credential.account = 'confirmEmail';
       res.send(credential);
+    }
+  }).catch((e)=>{
+    res.send(credential);
+  });
+});
+
+app.get('/demo', (req,res) => {
+  let credential = {};
+  credential.account = 'confirmed';
+  User.findByCredentials('demo@email.com', 'demo123').then((user)=>{
+    if (user.confirmed) {
+      return user.generateAuthToken().then((token)=>{
+        credential.token = token;
+        res.send(credential);
+      });
     }
   }).catch((e)=>{
     res.send(credential);

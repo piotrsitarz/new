@@ -26,7 +26,7 @@ const UserSchema = new mongoose.Schema({
     },
     confirmed: {
       type: Boolean,
-      default: false
+      default: true
     },
     tokens: [{
       access: {

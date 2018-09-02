@@ -28,7 +28,7 @@
           <p class="arrangement__title">Stoły</p>
         </div>
         <form name="addTable" layout="row" layout-align="center center" autocomplete="off">
-          <md-button class="arrangement__button" ng-click="add(name)" ng-disabled="addTable.$invalid" flex="50">Dodaj Stół</md-button>
+          <md-button class="arrangement__button" ng-click="add(name)" ng-disabled="addTable.$invalid">Dodaj Stół</md-button>
           <md-input-container class="arrangement__input-container" flex="50" md-no-float>
             <input class="arrangement__input-search" ng-model="name" required type="text" ng-pattern-restrict="^[A-Za-z]*$" placeholder="Nazwa Stołu">
           </md-input-container>
@@ -37,6 +37,6 @@
         </div>
       </div>
     </div>
-    <md-button class="arrangement__button" flex="100" ng-click="saveArrangement()" layout="row" layout-align="center center">Zapisz rozmieszczenie</md-button>
+    <md-button class="arrangement__button" ng-click="saveArrangement()" layout="row" layout-align="center center">Zapisz rozmieszczenie</md-button>
   </div>
 </div>

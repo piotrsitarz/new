@@ -25,7 +25,6 @@ angular.module('weddingApp')
               factory.filter(filter);
             })
           }
-          console.log(factory.model);
         });
       };
 

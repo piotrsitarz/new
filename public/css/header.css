@@ -71,6 +71,7 @@ md-sidenav, md-sidenav.md-locked-open, md-sidenav.md-closed.md-locked-open-add-a
 .sidenav__navigation a {
   font-size:32px;
   overflow-wrap:break-word;
+  text-align:center;
 }
 
 .header--route:hover, .header--route-active {
