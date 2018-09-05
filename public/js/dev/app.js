@@ -112,4 +112,4 @@ var app = angular.module('weddingApp', ['ngMessages','ngMaterial', 'xeditable','
     function ($state,amMoment,editableOptions, editableThemes) {
        $state.go('initialize');
        amMoment.changeLocale('pl');
-  }])
+  }]);

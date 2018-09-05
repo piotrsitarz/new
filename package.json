@@ -24,6 +24,15 @@
     "mongodb": "^3.0.7",
     "mongoose": "^5.0.16",
     "nodemailer": "^4.6.8",
-    "validator": "^9.4.1"
+    "validator": "^9.4.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-ng-annotate": "^2.1.0",
+    "gulp-plumber": "^1.2.0",
+    "pump": "^3.0.0",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-concat-css": "^3.1.0",
+    "gulp-uglify": "^3.0.1"
   }
 }

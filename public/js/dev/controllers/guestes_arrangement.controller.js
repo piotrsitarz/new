@@ -44,12 +44,7 @@ angular.module('weddingApp')
           }
         });
         $scope.tables.forEach(function(y){
-          var html = `<div class="table__wrapper" layout="column" layout-align="center center">
-                        <p class="table__title">${y}</p>
-                        <div class="table__guests" dragula='"first-bag"' dragula-model='${y}' layout="column" layout-align="center center">
-                          <p ng-repeat="item in ${y}" class="table__guest" title="{{item.name}}"><span class="guests__index">{{$index+1}}</span>{{'.   ' + item.name}}</p>
-                        </div>
-                      </div>`,
+          var html = '<div class="table__wrapper" layout="column" layout-align="center center">\n                        <p class="table__title">' + y + '</p>\n                        <div class="table__guests" dragula=\'"first-bag"\' dragula-model=\'' + y + '\' layout="column" layout-align="center center">\n                          <p ng-repeat="item in ' + y + '" class="table__guest" title="{{item.name}}"><span class="guests__index">{{$index+1}}</span>{{\'.   \' + item.name}}</p>\n                        </div>\n                      </div>',
           pageElement = angular.element(document.getElementsByClassName("tables__container")[0]),
           compiledElement = $compile(html)($scope);
           pageElement.append(compiledElement);
@@ -83,12 +78,7 @@ angular.module('weddingApp')
       } else {
           var model = $parse(table);
           model.assign($scope, []);
-          var html = `<div class="table__wrapper" layout="column" layout-align="center center">
-                        <p class="table__title">${table}</p>
-                        <div class="table__guests" dragula='"first-bag"' dragula-model='${table}' layout="column" layout-align="center center">
-                          <p ng-repeat="item in ${table}" class="table__guest" title="{{item.name}}"><span class="guests__index">{{$index+1}}</span>{{'.   ' + item.name}}</p>
-                        </div>
-                      </div>`,
+          var html = "<div class=\"table__wrapper\" layout=\"column\" layout-align=\"center center\">\n                        <p class=\"table__title\">" + table + "</p>\n                        <div class=\"table__guests\" dragula='\"first-bag\"' dragula-model='" + table + "' layout=\"column\" layout-align=\"center center\">\n                          <p ng-repeat=\"item in " + table + "\" class=\"table__guest\" title=\"{{item.name}}\"><span class=\"guests__index\">{{$index+1}}</span>{{'.   ' + item.name}}</p>\n                        </div>\n                      </div>",
           pageElement = angular.element(document.getElementsByClassName("tables__container")[0]),
           compiledElement = $compile(html)($scope);
           pageElement.append(compiledElement);

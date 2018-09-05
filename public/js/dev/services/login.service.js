@@ -7,8 +7,8 @@ angular.module('weddingApp')
       var factory = {};
 
       factory.account = {};
-      factory.account.email = '';
-      factory.account.password = '';
+      factory.account.email = 'piotrsitarz@onet.eu';
+      factory.account.password = 'siemanko1234567';
       factory.currentNavItem = 'login';
       factory.showLogin = true;
 

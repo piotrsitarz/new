@@ -8,7 +8,6 @@ angular.module('weddingApp')
 
       factory.get = function(cancelEdit) {
         $http.get('/guests_list').then(function successCallback(response) {
-
           factory.model = response.data.guests;
           factory.guests = factory.model.length;
           factory.modelCopy = angular.copy(factory.model);
